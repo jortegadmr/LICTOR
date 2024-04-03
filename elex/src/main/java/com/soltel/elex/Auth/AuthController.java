@@ -21,4 +21,9 @@ public class AuthController {
     {
         return ResponseEntity.ok(authService.login(request));
     }
+    @PostMapping(value = "register")
+    public String register(){
+        return "register";
+    }
+    
 }
