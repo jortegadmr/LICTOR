@@ -3,7 +3,7 @@ package com.soltel.elex.Auth;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-/* import org.springframework.security.crypto.password.PasswordEncoder; */
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.soltel.elex.Jwt.JwtService;
@@ -19,7 +19,7 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final JwtService jwtService;
-    /* private final PasswordEncoder passwordEncoder; */
+    private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
     public AuthResponse login(LoginRequest request) {
@@ -32,9 +32,10 @@ public class AuthService {
     }
 
     public AuthResponse register(RegisterRequest request) {
+        
         User user=User.builder()
         .username(request.getUsername())
-        .password(request.getPassword())
+        .password(passwordEncoder.encode(request.getPassword()))
         .role(Role.ADMIN)
         .build();
 
