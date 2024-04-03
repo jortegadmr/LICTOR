@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ElexApplication<elex>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.soltel.elex.ElexApplication",
+            "projectName": "elex",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

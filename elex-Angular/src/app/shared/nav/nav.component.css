@@ -1,0 +1,60 @@
+ul{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    
+}
+
+nav{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    width: 90px;
+    background: #3a505c;
+    width: 90px;
+    overflow: hidden;
+    transition: width 0.2s linear;
+
+}
+
+a{
+    
+    color: aliceblue;
+    font-size: 16px;
+    display: block;
+    width: 300px;
+    text-decoration: none;
+    padding: 25px;
+    
+}
+
+fa-icon{
+    
+    width: 70px;
+    height: 40px;
+    font-size: 30px;
+    
+
+}
+
+span{
+    margin-left: 45px;
+
+}
+
+a:hover{
+    background: aliceblue;
+    color: #3a505c;
+}
+
+nav:hover{
+    width: 280px;
+    transition: all 0.5s ease;
+
+}
