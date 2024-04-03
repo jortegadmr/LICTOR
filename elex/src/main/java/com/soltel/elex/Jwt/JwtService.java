@@ -10,11 +10,15 @@ import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 
 
 
 @Service
 public class JwtService {
+
+    private static final String SECRET_KEY = "84562314698549H1949872848394O916879P200024840E54111849";
 
     public String getToke (UserDetails user) {
         return getToken(new HashMap<>(), user);
@@ -32,6 +36,7 @@ public class JwtService {
     }
 
     private Key getKey() {
-        return null;
+       byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+       return Keys.hmacShaKeyFor(keyBytes);
     }
 }
