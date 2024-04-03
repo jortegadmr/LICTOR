@@ -40,6 +40,11 @@ public class ApplicationConfig {
         return new BCryptPasswordEncoder();
     }
 
+    /* public static void main(String[] args) {
+
+        System.out.println("password: " + new BCryptPasswordEncoder().encode("admin"));
+    } */
+
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> userRepository.findByUsername(username)
