@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.soltel.elex.Jwt.JwtService;
-import com.soltel.elex.User.Role;
+/* import com.soltel.elex.User.Role; */
 import com.soltel.elex.User.User;
 import com.soltel.elex.User.UserRepository;
 
@@ -36,7 +36,7 @@ public class AuthService {
         User user=User.builder()
         .username(request.getUsername())
         .password(passwordEncoder.encode(request.getPassword()))
-        .role(Role.ADMIN)
+        /* .role(Role.ADMIN) */
         .build();
 
         userRepository.save(user);

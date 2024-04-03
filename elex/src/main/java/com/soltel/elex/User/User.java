@@ -31,13 +31,13 @@ public class User implements UserDetails {
     @Column(nullable = false)
     String username;
     String password;
-    Role role;
+    /* Role role; */
 
 
-    @Override
+    /* @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
-    }
+    } */
     @Override
     public boolean isAccountNonExpired() {
         return true;
