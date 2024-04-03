@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "username")})
+@Table(name = "user", uniqueConstraints = {@UniqueConstraint(columnNames = "username")})
 public class User implements UserDetails {
     @Id
     @GeneratedValue
