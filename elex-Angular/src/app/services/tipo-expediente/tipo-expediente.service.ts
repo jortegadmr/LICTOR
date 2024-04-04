@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
+import { Tipo } from './tipo';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ export class TipoExpedienteService {
 
   private http = inject(HttpClient);
 
-  list(){
-    return this.http.get<any>("http://localhost:8008/tipo-expediente/consultar").pipe(
+  list():Observable<Tipo>{
+    return this.http.get<Tipo>("http://localhost:8008/tipo-expediente/consultar").pipe(
       catchError(this.handleError)
     )
   }

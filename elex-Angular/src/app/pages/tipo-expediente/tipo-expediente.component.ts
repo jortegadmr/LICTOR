@@ -3,6 +3,7 @@ import { LoginService } from '../../services/auth/login.service';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service';
 import { HttpClient } from '@angular/common/http';
+import { Tipo } from '../../services/tipo-expediente/tipo';
 
 @Component({
   selector: 'app-tipo-expediente',
@@ -17,12 +18,23 @@ import { HttpClient } from '@angular/common/http';
 
 
 export class TipoExpedienteComponent {
+  tipo?: Tipo;
+  errorMessage:String = "";
+ /*  public tipoExpedienteService = inject(TipoExpedienteService); */
 
-  public tipoExpedienteService = inject(TipoExpedienteService);
-
-  constructor(){
+  constructor(private tipoExpedienteService: TipoExpedienteService) {
     this.tipoExpedienteService.list()
-    .subscribe(data => console.log(data));
+    .subscribe({
+      next: (tipoData)=>{
+        this.tipo = tipoData;
+      },
+      error: (errorData)=>{
+        this.errorMessage = errorData
+      },
+      complete: ()=>{
+        console.info('Tipos de expedientes listado-MOSTRADOS');
+      }
+    })
     
   }
   
