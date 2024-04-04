@@ -5,6 +5,7 @@ import { TipoExpedienteComponent } from './pages/tipo-expediente/tipo-expediente
 import { ActuacionesComponent } from './pages/actuaciones/actuaciones.component';
 import { DocumentosComponent } from './pages/documentos/documentos.component';
 import { ExpedientesComponent } from './pages/expedientes/expedientes.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     /* ---Definimos las Rutas--- */
@@ -12,12 +13,12 @@ export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     
     
-    { path: 'inicio', component: DashboardComponent },
+    { path: 'inicio', component: DashboardComponent, canActivate: [authGuard] },
     { path: 'login', component: LoginComponent },
 
-    { path: 'tipo-expediente', component: TipoExpedienteComponent },
-    { path: 'actuaciones', component:ActuacionesComponent },
-    { path: 'documentos', component: DocumentosComponent },
-    { path: 'expedientes', component: ExpedientesComponent},
+    { path: 'tipo-expediente', component: TipoExpedienteComponent, canActivate: [authGuard] },
+    { path: 'actuaciones', component:ActuacionesComponent, canActivate: [authGuard] },
+    { path: 'documentos', component: DocumentosComponent, canActivate: [authGuard] },
+    { path: 'expedientes', component: ExpedientesComponent, canActivate: [authGuard]},
 
 ];
