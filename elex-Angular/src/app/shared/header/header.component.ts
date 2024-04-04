@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink,  Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUser, faCode, faBars, faHome, faFolder, faTasks, faArchive, faFileAlt  } from '@fortawesome/free-solid-svg-icons';
+import { LoginService } from '../../services/auth/login.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ import { faUser, faCode, faBars, faHome, faFolder, faTasks, faArchive, faFileAlt
   imports: [
     CommonModule,
     RouterOutlet,
-    FontAwesomeModule
+    FontAwesomeModule,
+    
   ],
 
   templateUrl: './header.component.html',
@@ -31,5 +33,13 @@ export class HeaderComponent {
   faArchive = faArchive;
   faFileAlt = faFileAlt;
 /* -----------------------  */
+
+constructor(private loginService: LoginService, private router: Router) {}
+logout()
+{
+  this.loginService.logout();
+  this.router.navigate(['/login']);
+
+}
 
 }
