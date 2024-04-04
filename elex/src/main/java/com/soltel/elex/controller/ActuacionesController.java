@@ -9,6 +9,7 @@ import java.util.*;
 @CrossOrigin (origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/actuaciones")
+
 public class ActuacionesController {
 
 	@Autowired

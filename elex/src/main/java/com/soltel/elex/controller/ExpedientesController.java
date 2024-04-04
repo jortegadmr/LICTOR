@@ -12,6 +12,7 @@ import java.util.*;
 @CrossOrigin (origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/expedientes")
+
 public class ExpedientesController {
 
     @Autowired

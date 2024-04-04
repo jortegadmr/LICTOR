@@ -21,6 +21,7 @@ import com.soltel.elex.services.TipoExpedienteService;
 @CrossOrigin (origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/tipo-expediente")
+
 public class TipoExpedienteController {
 	 @Autowired
 	    private TipoExpedienteService tipoExpedienteService;
