@@ -22,11 +22,13 @@ public class JwtService {
 
     private static final String SECRET_KEY = "84562314698549H1949872848394O916879P200024840E54111849";
 
-    public String getToken (UserDetails user) {
+    public String getToken (UserDetails user) 
+    {
         return getToken(new HashMap<>(), user);
     }
 
-    private String getToken(Map<String, Object> extraClaims, UserDetails user) {
+    private String getToken(Map<String, Object> extraClaims, UserDetails user) 
+    {
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
@@ -37,19 +39,23 @@ public class JwtService {
                 .compact();
     }
 
-    private Key getKey() {
+    private Key getKey() 
+    {
        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
        return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String getUsernameFromToken(String token) {
+    public String getUsernameFromToken(String token) 
+    {
         
-        return null;
+        return getClaim(token, Claims::getSubject);
     }
 
-    public boolean isTokenValid(String token, UserDetails userDetails) {
+    public boolean isTokenValid(String token, UserDetails userDetails) 
+    {
         
-        return false;
+        final String username = getUsernameFromToken(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
     private Claims getAllClaims(String token) 
@@ -66,5 +72,15 @@ public class JwtService {
     {
         final Claims claims = getAllClaims(token);
         return claimsResolver.apply(claims);
+    }
+
+    private Date getExpiration (String token) 
+    {
+        return getClaim(token, Claims::getExpiration);
+    }
+
+    private boolean isTokenExpired(String token) 
+    {
+        return getExpiration(token).before(new Date());
     }
 }
