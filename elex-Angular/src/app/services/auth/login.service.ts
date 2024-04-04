@@ -45,7 +45,7 @@ export class LoginService {
       console.error('Backend retorno el codigo de estado:', error.error);
     }
     // Definir una respuesta apropiada
-    return throwError(() => new Error('Algo ha fallado; por favor, inténtelo de nuevo.'));
+    return throwError(() => new Error('Usuario o Contraseña incorrectos; por favor, inténtelo de nuevo.'));
   }
 
   get userData(): Observable<String> {

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUser, faCode, faBars, faHome, faFolder, faTasks, faArchive, faFileAlt  } from '@fortawesome/free-solid-svg-icons';
+import { LoginService } from '../../services/auth/login.service';
+
 
 @Component({
   selector: 'app-nav',
@@ -23,6 +25,16 @@ import { faUser, faCode, faBars, faHome, faFolder, faTasks, faArchive, faFileAlt
 export class NavComponent {
 
   userLoginOn: boolean = false;
+
+  constructor(private loginService: LoginService) {}
+
+  ngOnInit(): void {
+    // Suscribirse al BehaviorSubject para recibir actualizaciones del estado de inicio de sesión
+    this.loginService.currentUserLoginOn.subscribe((loggedIn: boolean) => {
+      // Actualizar el estado userLoginOn
+      this.userLoginOn = loggedIn;
+    });
+  }
 
   /* ICONOS FONTAWESOME  */
   faUser = faUser;
