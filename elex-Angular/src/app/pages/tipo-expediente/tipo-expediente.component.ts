@@ -21,8 +21,9 @@ export class TipoExpedienteComponent {
   public tipoExpedienteService = inject(TipoExpedienteService);
 
   constructor(){
-    this.tipoExpedienteService.list();
-    console.log(this.tipoExpedienteService.list());
+    this.tipoExpedienteService.list()
+    .subscribe(data => console.log(data));
+    
   }
   
 }
