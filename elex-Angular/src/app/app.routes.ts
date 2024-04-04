@@ -5,7 +5,7 @@ import { LoginComponent } from './auth/login/login.component';
 export const routes: Routes = [
     /* ---Definimos las Rutas--- */
     
-    { path: '', redirectTo: '/inicio', pathMatch: 'full' },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
     
     
     { path: 'inicio', component: DashboardComponent },

@@ -22,7 +22,7 @@ import { faUser, faCode, faBars, faHome, faFolder, faTasks, faArchive, faFileAlt
 })
 export class NavComponent {
 
-  userLoginOn: boolean = true;
+  userLoginOn: boolean = false;
 
   /* ICONOS FONTAWESOME  */
   faUser = faUser;
