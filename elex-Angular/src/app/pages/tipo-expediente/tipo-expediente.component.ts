@@ -1,5 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service';
+/* import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service'; */
+import { LoginService } from '../../services/auth/login.service';
+
 
 @Component({
   selector: 'app-tipo-expediente',
@@ -9,12 +11,17 @@ import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-exped
   styleUrl: './tipo-expediente.component.css'
 })
 export class TipoExpedienteComponent implements OnInit {
-  private tipoExpedienteService = inject(TipoExpedienteService);
+  userLoginOn: boolean = false;
+  constructor(private loginService: LoginService){}
+  
 
   ngOnInit(): void {
-      this.tipoExpedienteService.list()
-      .subscribe(tipoExpediente => {
-        console.log(tipoExpediente);
-      });
+      this.loginService.currentUserLoginOn.subscribe(
+        {
+          next:(userLoginOn)=>{
+            this.userLoginOn=userLoginOn;
+          }
+        }
+      )
   }
 }
