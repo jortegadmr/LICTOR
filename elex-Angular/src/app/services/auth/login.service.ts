@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginRequest } from './loginRequest';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError, Observable, catchError, BehaviorSubject } from 'rxjs';
+import { throwError, Observable, catchError, BehaviorSubject, tap, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +9,31 @@ import { throwError, Observable, catchError, BehaviorSubject } from 'rxjs';
 export class LoginService {
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  currentUserData: BehaviorSubject<String> = new BehaviorSubject<String>("");
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.currentUserLoginOn=new BehaviorSubject<boolean>(sessionStorage.getItem("token")!=null);
+    this.currentUserData=new BehaviorSubject<String>(sessionStorage.getItem("token") || "");
+   }
 
   login(credentials: LoginRequest): Observable<any> {
-    return this.http.post<any>('http://localhost:8008/login', credentials).pipe(
+    return this.http.post<any>('http://localhost:8008/auth/login', credentials).pipe(
+      tap((userData) => {
+        sessionStorage.setItem("token",userData.token);
+        this.currentUserData.next(userData.token);
+        this.currentUserLoginOn.next(true);
+
+      }),
       // Emplear la función de manejo de errores de RxJS
+      map((userData)=> userData.token),
       catchError(this.handleError)
     )
+  }
+
+  logout():void{
+    sessionStorage.removeItem("token");
+    this.currentUserLoginOn.next(false);
+
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -29,5 +46,13 @@ export class LoginService {
     }
     // Definir una respuesta apropiada
     return throwError(() => new Error('Algo ha fallado; por favor, inténtelo de nuevo.'));
+  }
+
+  get userData(): Observable<String> {
+    return this.currentUserData.asObservable();
+  }
+    
+  get userLoginOn(): Observable<boolean> {
+    return this.currentUserLoginOn.asObservable();
   }
 }

@@ -25,10 +25,9 @@ import { LoginRequest } from '../../services/auth/loginRequest';
 })
 
 export class LoginComponent {
-  
-  loginError: string='';
   ngOnInit(): void {}
   
+  loginError: string='';
   loginForm = this.formBuilder.group({
     username: ['', Validators.required],
     password: ['', Validators.required]
