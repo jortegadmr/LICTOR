@@ -1,7 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
-/* import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service'; */
 import { LoginService } from '../../services/auth/login.service';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-tipo-expediente',
@@ -13,20 +14,15 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './tipo-expediente.component.html',
   styleUrl: './tipo-expediente.component.css'
 })
-export class TipoExpedienteComponent implements OnInit {
-  userLoginOn: boolean = false;
-  constructor(private loginService: LoginService){}
-  
 
-  ngOnInit(): void {
-    this.loginService.currentUserLoginOn.subscribe({
-      next: (userLoginOn) => {
-        this.userLoginOn = userLoginOn;
-        if (!this.userLoginOn) { 
-          //condicion dirigir al login
-          console.log('no hay sesión iniciada');
-        }
-      }
-    });
+
+export class TipoExpedienteComponent {
+
+  public tipoExpedienteService = inject(TipoExpedienteService);
+
+  constructor(){
+    this.tipoExpedienteService.list();
+    console.log(this.tipoExpedienteService.list());
   }
+  
 }

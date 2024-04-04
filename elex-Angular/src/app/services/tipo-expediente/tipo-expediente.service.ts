@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,9 @@ export class TipoExpedienteService {
   private http = inject(HttpClient);
 
   list(){
-    return this.http.get("http://localhost:8008/tipo-expediente/consultar").pipe()
+    return this.http.get<any>("http://localhost:8008/tipo-expediente/consultar").pipe(
+      catchError(this.handleError)
+    )
   }
 
   create(contact:any){
@@ -25,4 +28,14 @@ export class TipoExpedienteService {
   }
 
   constructor() { }
+
+  private handleError(error:HttpErrorResponse){
+    if (error.status === 0) {
+      console.error('Se ha producido un error:', error.error);
+    }else{
+      console.error('Backend retorno el codigo de estado:', error.error);
+    }
+    return throwError(() => new Error('Algo salio mal; por favor, inténtelo de nuevo.'));
+  }
 }
+
