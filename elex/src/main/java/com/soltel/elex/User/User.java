@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -31,6 +33,7 @@ public class User implements UserDetails {
     @Column(nullable = false)
     String username;
     String password;
+    @Enumerated(EnumType.STRING) // Especifica el tipo de columna para el enum
     Role role;
 
 
