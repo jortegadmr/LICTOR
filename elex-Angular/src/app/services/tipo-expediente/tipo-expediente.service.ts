@@ -1,4 +1,50 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from "@angular/common/http";
+import { Injectable, inject } from "@angular/core";
+import { Observable } from "rxjs";
+import { TipoResponse } from "./tipo-response";
+
+@Injectable({
+  providedIn: "root"
+})
+
+export class TipoExpedienteService {
+
+  private http = inject (HttpClient);
+
+  constructor() {}
+
+  getTipoExpediente():Observable<TipoResponse>{
+    return this.http.get<TipoResponse>('http://localhost:8008/tipo-expediente/consultar');
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// -----------------------------------------------Codigo anterior -----------------------------------------------
+
+
+
+/* import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Tipo, TipoResponse } from './tipo-response';
@@ -24,7 +70,7 @@ export class TipoExpedienteService {
   public tipos = computed( ()=> this.#state().tipos); 
   public loading = computed( ()=> this.#state().loading);
   //--------------------------------
-  
+
   constructor() {
     console.log('CARGANDO TIPO DE EXPEDIENTES');
 
@@ -39,9 +85,14 @@ export class TipoExpedienteService {
     });
   }
 }
+ */
 
 
-// -----------------------------------------------Codigo anterior -----------------------------------------------
+
+
+
+
+
 
 /* private http = inject(HttpClient);
 

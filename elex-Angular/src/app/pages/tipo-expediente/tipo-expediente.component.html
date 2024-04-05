@@ -3,7 +3,7 @@
         <p>PAGINA DE TIPO EXPEDIENTE</p>
         
         <ul>
-            @for (tipo of tipoExpedienteService.tipos(); track tipo.id) {
+           <!--  @for (tipo of tipoExpedienteService.tipos(); track tipo.id) {
 
                 <li>
 
@@ -13,8 +13,16 @@
 
                 </li>
 
-            }
+            } -->
         </ul>
+
+        @if (tipoResult$ | async; as result3Object) {
+            <ul>
+                @for(item of result3Object.data; track item.id ){
+                    {{item.id}} {{item.nombre}}
+                }
+            </ul>
+        }
         
     </div>
 </div>

@@ -1,6 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service';
+import { Observable } from 'rxjs';
+import { TipoResponse } from '../../services/tipo-expediente/tipo-response';
+import { AsyncPipe } from '@angular/common';
 
 
 @Component({
@@ -8,19 +11,33 @@ import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-exped
   standalone: true,
   imports: [
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
+    AsyncPipe,
   ],
   templateUrl: './tipo-expediente.component.html',
   styleUrl: './tipo-expediente.component.css'
 })
 
 
-export class TipoExpedienteComponent {
+export class TipoExpedienteComponent implements OnInit {
+ 
 
+  public tipoResult$!: Observable<TipoResponse>;
   public tipoExpedienteService = inject(TipoExpedienteService); //Llamada o Inyección del Service Donde está la logica
   
-  
+  ngOnInit(): void {
+    this.tipoResult$ = this.tipoExpedienteService.getTipoExpediente();
+  }
 }
+
+
+
+
+
+
+
+
+
 
 // -----------------------------------------------Codigo anterior -----------------------------------------------
 
