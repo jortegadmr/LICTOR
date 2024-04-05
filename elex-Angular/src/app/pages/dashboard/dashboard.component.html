@@ -3,4 +3,24 @@
     <div class="row">
         <p>PAGINA DE INICIO/DASHBOARD</p>
     </div>
+    <div>
+        <ul>
+            @for (user of usersService.users(); track user.id) {
+
+                <li>
+                    <img
+                        [srcset]="user.avatar"
+                        [alt]="user.first_name"
+                        class="rounded w-14"
+                    />
+
+                    <a href="#">
+                        {{user.first_name}} {{user.last_name}}
+                    </a>
+                </li>
+
+            }
+            
+        </ul>
+    </div>
 </div>
