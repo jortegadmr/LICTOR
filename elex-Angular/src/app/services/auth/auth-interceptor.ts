@@ -6,13 +6,14 @@ import { inject } from "@angular/core";
 export const authInterceptor: HttpInterceptorFn = (req, next) =>{
   const jwtToken = getJwtToken();
   if (jwtToken){
-    req.clone({
+    var clone = req.clone({
         setHeaders:{
             'Content-Type': 'application/json; charset=utf-8',
             'Accept':'application/json',
             'Authorization': `Bearer ${jwtToken}`,
         }
     })
+    return next (clone);
   }
   return next(req);
 }
