@@ -1,8 +1,20 @@
 <div class="container py-5 h-100">
     <div>
         <p>PAGINA DE TIPO EXPEDIENTE</p>
-        <p>{{tipo?.id}}</p>
-        <p>{{tipo?.nombre}}</p>
+        
+        <ul>
+            @for (tipo of tipoExpedienteService.tipos(); track tipo.id) {
+
+                <li>
+
+                        <a href="#">
+                            {{tipo.id}} {{tipo.nombre}}
+                        </a>
+
+                </li>
+
+            }
+        </ul>
         
     </div>
 </div>

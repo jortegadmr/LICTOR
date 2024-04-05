@@ -1,10 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Tipo } from './tipo-response';
+import { Tipo, TipoResponse } from './tipo-response';
 
 interface State{
-  tipos: any[];
+  tipos: Tipo[];
   loading: boolean;
 }
 
@@ -13,7 +13,31 @@ interface State{
 })
 export class TipoExpedienteService {
 
+  private http = inject( HttpClient);
 
+  #state = signal<State>({
+    loading: true,
+    tipos: [],
+  })
+
+  // Señal computada de solo lectura
+  public tipos = computed( ()=> this.#state().tipos); 
+  public loading = computed( ()=> this.#state().loading);
+  //--------------------------------
+  
+  constructor() {
+    console.log('CARGANDO TIPO DE EXPEDIENTES');
+
+    this.http.get<TipoResponse>('http://localhost:8008/tipo-expediente/consultar').pipe()
+    .subscribe( res => {
+
+      this.#state.set({
+        loading: false,
+        tipos: res.data,
+      })
+
+    });
+  }
 }
 
 
