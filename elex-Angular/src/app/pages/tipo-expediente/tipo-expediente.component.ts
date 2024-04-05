@@ -3,7 +3,7 @@ import { LoginService } from '../../services/auth/login.service';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service';
 import { HttpClient } from '@angular/common/http';
-import { Tipo } from '../../services/tipo-expediente/tipo';
+import { Tipo } from '../../services/tipo-expediente/tipo-response';
 
 @Component({
   selector: 'app-tipo-expediente',

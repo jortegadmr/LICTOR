@@ -1,7 +1,12 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Tipo } from './tipo';
+import { Tipo } from './tipo-response';
+
+interface State{
+  tipos: any[];
+  loading: boolean;
+}
 
 @Injectable({
   providedIn: 'root'
