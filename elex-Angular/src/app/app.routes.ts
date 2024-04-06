@@ -15,7 +15,7 @@ import { ExpedientesFormComponent } from './form/expedientes-form/expedientes-fo
 export const routes: Routes = [
     /* ---Definimos las Rutas--- */
     
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '', redirectTo: '/inicio', pathMatch: 'full' },
     
     
     { path: 'inicio', component: DashboardComponent, canActivate: [authGuard] },
