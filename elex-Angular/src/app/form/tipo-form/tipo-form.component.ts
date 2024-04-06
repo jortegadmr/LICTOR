@@ -20,7 +20,7 @@ import { Tipo } from '../../services/tipo-expediente/tipo-response';
 export class TipoFormComponent {
 
   private fb = inject(FormBuilder);
-  private tipoEpedienteService = inject(TipoExpedienteService); //inyeccion de dependencias, inicializa el servicio
+  private tipoExpedienteService = inject(TipoExpedienteService); //inyeccion de dependencias, inicializa el servicio
   private router = inject(Router);
 
   form = this.fb.group({
@@ -41,7 +41,7 @@ export class TipoFormComponent {
         const tipodato: Tipo = { id: 0, nombre: nombre };
   
         // Llamar al servicio para crear el tipo de expediente
-        this.tipoEpedienteService.createTipoExpediente(tipodato)
+        this.tipoExpedienteService.createTipoExpediente(tipodato)
           .subscribe(() => {
             // Manejar la respuesta o realizar acciones adicionales si es necesario
             this.router.navigate(['tipo-expediente']);

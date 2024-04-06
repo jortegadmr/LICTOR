@@ -1,1 +1,14 @@
-<p>documentos-form works!</p>
+<div class="container py-5 h-100">
+    <h2>Nuevo Documento</h2>
+
+    <form  class="mt-4">
+        <div class="mb-3 d-flex align-items-end">
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre" formControlName="nombre" class="form-control me-2">
+            <input type="text" id="fecha" name="fecha" placeholder="Fecha" formControlName="fecha" class="form-control">
+            <input type="text" id="descripcion" name="descripcion" placeholder="Descripcion" formControlName="descripcion" class="form-control">
+            
+
+            <button type="button" class="btn btn-light ms-2" routerLink="/documentos">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Crear</button>
+</div>
+<router-outlet></router-outlet>
