@@ -4,7 +4,28 @@
     <form>
         
             <div class="mb-3 d-flex align-items-end">
-                <input type="text" id="nombre" name="nombre" placeholder="Tipo Expediente" formControlName="nombre" class="form-control me-2">
+                <!-- Aqui un desplegable de los tipos Expedientes -->
+                
+                <select id="tipoExpediente" name="tipoExpediente" formControlName="tipoExpediente" class="form-select me-2">
+                    <option value="" disabled selected>Seleccionar Tipo de Expediente</option>
+                    <!-- <option @for (tipo of tipos; track tipo.id)>{{ tipo.nombre }}</option> -->
+                </select>
+
+                <input type="date" id="date" name="date" formControlName="date" class="form-control me-2">
+                <input type="text" id="numero" name="numero" placeholder="Numero" formControlName="numero" class="form-control me-2">
+                <input type="text" id="materia" name="materia" placeholder="Materia" formControlName="materia" class="form-control me-2">
+                <!-- Aqui un booleano  para estado -->
+                <div class="form-check">
+                    <input type="checkbox" id="estado" name="estado" formControlName="estado" class="form-check-input">
+                    <label for="estado" class="form-check-label">Estado Vivo</label>
+                </div>
+
+                <input type="text" id="responsable" name="responsable" placeholder="Responsable" formControlName="responsable" class="form-control me-2">
+                <input type="text" id="responsable2" name="responsable2" placeholder="Segundo Responsable" formControlName="responsable2" class="form-control me-2">
+                <input type="text" id="condicion" name="condicion" placeholder="Condicion" formControlName="condicion" class="form-control me-2">
+                <input type="text" id="consejeria" name="consejeria" placeholder="Consejeria" formControlName="consejeria" class="form-control me-2">
+                <input type="text" id="precio" name="precio" placeholder="Precio" formControlName="precio" class="form-control me-2">
+                <input type="text" id="descripcion" name="descripcion" placeholder="Descripción" formControlName="descripcion" class="form-control me-2">
                 
                 <button type="button" class="btn btn-light ms-2" routerLink="/tipo-expediente">Cancelar</button>
                 <button type="submit" class="btn btn-primary">Crear</button>

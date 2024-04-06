@@ -3,6 +3,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { ExpedientesService } from '../../services/expedientes/expedientes.service';
 import { Expedientes } from '../../services/expedientes/expedientes-response';
+import { TipoExpedienteComponent } from '../tipo-expediente/tipo-expediente.component';
 
 @Component({
   selector: 'app-expedientes',
@@ -11,7 +12,8 @@ import { Expedientes } from '../../services/expedientes/expedientes-response';
     RouterLink,
     RouterOutlet,
     AsyncPipe,
-    ExpedientesComponent
+    ExpedientesComponent,
+    TipoExpedienteComponent
   ],
   templateUrl: './expedientes.component.html',
   styleUrl: './expedientes.component.css'
