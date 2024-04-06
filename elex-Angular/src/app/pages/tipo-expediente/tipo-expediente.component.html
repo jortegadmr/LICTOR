@@ -1,3 +1,11 @@
-<div class="container py-5 h-100">
-    <p>{{tipoInfo.id}}- {{tipoInfo.nombre}}</p>
+
+<div class="container">
+    <div class="row">
+        <p>PAGINA DE TIPOS DE EXPEDIENTES</p>
+    </div>
+    <div>
+        @for (tipo of tipos; track tipo.id) {
+            <p>{{tipo.id}}- {{tipo.nombre}}</p>
+        }
+    </div>
 </div>
