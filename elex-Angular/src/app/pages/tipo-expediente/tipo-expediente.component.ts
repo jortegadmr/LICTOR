@@ -1,8 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service';
 import { Observable } from 'rxjs';
-import { TipoResponse } from '../../services/tipo-expediente/tipo-response';
+import { Tipo, TipoResponse } from '../../services/tipo-expediente/tipo-response';
 import { AsyncPipe } from '@angular/common';
 
 
@@ -21,15 +21,21 @@ import { AsyncPipe } from '@angular/common';
 
 export class TipoExpedienteComponent implements OnInit {
  
+  
 
   public tipoResult$!: Observable<TipoResponse>;
   public tipoExpedienteService = inject(TipoExpedienteService); //Llamada o Inyección del Service Donde está la logica
   
   ngOnInit(): void {
     
-    this.tipoExpedienteService.getTipoExpediente().subscribe((value:TipoResponse) =>{
-      console.log(value);
+    this.tipoResult$ = this.tipoExpedienteService.getTipoExpediente();
+    this.tipoResult$.subscribe((data:TipoResponse)=>{
+      console.log(data);
     })
+      
+
+    
+    
 
   }
 }

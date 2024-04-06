@@ -2,30 +2,8 @@
     <div>
         <p>PAGINA DE TIPO EXPEDIENTE</p>
         
-        <ul>
-           <!--  @for (tipo of tipoExpedienteService.tipos(); track tipo.id) {
-
-                <li>
-
-                        <a href="#">
-                            {{tipo.id}} {{tipo.nombre}}
-                        </a>
-
-                </li>
-
-            } -->
-        </ul>
-
-        @if (tipoResult$ | async; as result3Object) {
-            <ul>
-                @for(item of result3Object.data; track item.id ){
-                    {{item.id}} {{item.nombre}}
-                }
-            </ul>
-        }
+        
         
     </div>
-    <!-- <div>
-        <p> El Nombre del Tipo de Expediente es: {{(tipoResult$ | async)?.data}}</p>
-    </div> -->
+    
 </div>
