@@ -27,7 +27,8 @@ export class TipoExpedienteComponent {
   
   ngOnInit(): void {  // Se ejecuta al inciar el componente, guardamos los datos en la variable "tipos"
 
-    this.tipoExpedienteService.getTipoExpediente().subscribe( (tipos: any) =>{  
+    this.tipoExpedienteService.getTipoExpediente()
+    .subscribe( (tipos: any) =>{  
       console.log(tipos);
       this.tipos=tipos;
     });
