@@ -31,13 +31,12 @@ export class TipoFormComponent {
 
     console.log(this.form.value);
 
-   /* const dato: Tipo [
+    const tipodato = this.form.value;
 
-   ]
-
-  this.tipoEpedienteService.createTipoExpediente(dato)
-  .subscribe(()=>{
-
-    }); */
+    this.tipoEpedienteService.createTipoExpediente(tipodato)
+    .subscribe(()=>{
+      
+    })
+    
   }
 }

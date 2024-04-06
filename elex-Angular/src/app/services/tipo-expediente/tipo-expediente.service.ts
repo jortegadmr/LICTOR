@@ -18,8 +18,8 @@ export class TipoExpedienteService {
     return this.http.get<Tipo>(this.tipoUrl + 'consultar');
   }
   
-  createTipoExpediente(tipo:Tipo):Observable<Tipo>{
-    return this.http.post<Tipo>(this.tipoUrl + 'insertar', tipo);
+  createTipoExpediente(tipo: Tipo): Observable<Tipo> {
+    return this.http.post<Tipo>(`http://localhost:8008/tipo-expediente/${tipo.nombre}`, tipo);
   }
   
   updateTipoExpediente(id: number, tipo:Tipo):Observable<Tipo>{
