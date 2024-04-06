@@ -4,8 +4,20 @@
         <p>PAGINA DE TIPOS DE EXPEDIENTES</p>
     </div>
     <div>
-        @for (tipo of tipos; track tipo.id) {
-            <p>{{tipo.id}}- {{tipo.nombre}}</p>
-        }
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (tipo of tipos; track tipo.id) {
+                    <tr>
+                        <td>{{tipo.nombre}}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+       
     </div>
 </div>

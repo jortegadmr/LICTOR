@@ -1,1 +1,31 @@
-<p>actuaciones works!</p>
+<div class="container">
+    <div class="row">
+        <p>PAGINA DE ACTUACIONES</p>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Expediente</th>
+                    <th>Nombre</th>
+                    <th>Tipo Expediente</th>
+                    <th>Fecha </th>
+                    <th>Estado</th>
+                    <th>Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (actuacion of actuaciones; track actuacion.id) {
+                    <tr>
+                        <td>{{actuacion.expediente.numero}}</td>
+                        <td>{{actuacion.nombre}}</td>
+                        <td>{{actuacion.expediente.expediente.nombre}}</td>
+                        <td>{{actuacion.fecha}}</td>
+                        @if (actuacion.estado) {
+                            <td>Viva</td>
+                        }@else {
+                            <td>Archivada</td>
+                        }
+                        <td>{{actuacion.descripcion}}</td>
+                }
+            </tbody>

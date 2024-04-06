@@ -1,8 +1,7 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service';
-import { Observable } from 'rxjs';
-import { Tipo, TipoResponse } from '../../services/tipo-expediente/tipo-response';
+import { Tipo } from '../../services/tipo-expediente/tipo-response';
 import { AsyncPipe } from '@angular/common';
 
 

@@ -1,1 +1,27 @@
-<p>documentos works!</p>
+<div class="container">
+    <div class="row">
+        <p>PAGINA DE DOCUMENTOS</p>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Descripcion</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @for (documento of document; track documento.id) {
+                    <tr>
+                        <td>{{documento.nombre}}</td>
+                        <td>{{documento.fecha}}</td>
+                        <td>{{documento.descripcion}}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+       
+    </div>
+</div>
