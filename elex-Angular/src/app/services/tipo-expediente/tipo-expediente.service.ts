@@ -10,11 +10,12 @@ import { TipoResponse } from "./tipo-response";
 export class TipoExpedienteService {
 
   private http = inject (HttpClient);
-
+  private readonly tipoUrl = 'http://localhost:8008/tipo-expediente/';
+  
   constructor() {}
 
   getTipoExpediente():Observable<TipoResponse>{
-    return this.http.get<TipoResponse>('http://localhost:8008/tipo-expediente/consultar');
+    return this.http.get<TipoResponse>(this.tipoUrl + 'consultar');
 
   }
 }
