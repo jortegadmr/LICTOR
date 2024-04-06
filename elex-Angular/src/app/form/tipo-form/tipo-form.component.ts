@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,7 +8,8 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
   imports: [
     RouterLink,
     RouterOutlet,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './tipo-form.component.html',
   styleUrl: './tipo-form.component.css'

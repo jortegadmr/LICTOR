@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet, RouterModule } from '@angular/router';
 
 @Component({
@@ -7,7 +8,8 @@ import { RouterLink, RouterOutlet, RouterModule } from '@angular/router';
   imports: [
     RouterLink,
     RouterOutlet,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './documentos-form.component.html',
   styleUrl: './documentos-form.component.css'
