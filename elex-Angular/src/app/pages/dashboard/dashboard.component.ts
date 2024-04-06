@@ -21,14 +21,27 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   public tipoResult$!: Observable <TipoResponse>
+  public tipoR$!: Observable <Tipo>
 
   public tipoExpedienteService = inject (TipoExpedienteService);
   public usersService = inject (UsersService);
+
+  /* tipos: Tipo[] = []; */
+  tipos: any[]=[];
   
   ngOnInit(): void {
-      this.tipoResult$ = this.tipoExpedienteService.getTipoExpediente();
+
+    this.tipoExpedienteService.getTipoExpediente().subscribe( (tipos: any) =>{
+      console.log(tipos);
+      this.tipos=tipos;
+    });
+      
+    
+
+
+     /*  this.tipoResult$ = this.tipoExpedienteService.getTipoExpediente();
       this.tipoResult$.subscribe((data:TipoResponse)=>{
-        console.log(data);
-      })
+        console.log(data); */
+      
   }
 }

@@ -4,37 +4,10 @@
         <p>PAGINA DE INICIO/DASHBOARD</p>
     </div>
     <div>
-        @if (tipoResult$ | async; as resultadObject) {
-            <p>FUNCIONA</p>
-            <ul>
-                @for (item of resultadObject.data; track item.id) {
-                    <li>
-                        <app-tipo-expediente [tipoInfo]="item"/>
-                    </li>
-                }
-            </ul>
+        @for (tipo of tipos; track tipo.id) {
+            <p>{{tipo.id}}- {{tipo.nombre}}</p>
         }
     </div>
 </div>
 
 
-
-
-
-
-
-  <!--  @for (user of usersService.users(); track user.id) {
-
-                <li>
-                    <img
-                        [srcset]="user.avatar"
-                        [alt]="user.first_name"
-                        class="rounded w-14"
-                    />
-
-                    <a href="#">
-                        {{user.first_name}} {{user.last_name}}
-                    </a>
-                </li>
-
-            } -->

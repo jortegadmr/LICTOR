@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
-import { TipoResponse } from "./tipo-response";
+import { TipoResponse, Tipo } from "./tipo-response";
 
 @Injectable({
   providedIn: "root"
@@ -14,8 +14,8 @@ export class TipoExpedienteService {
   
   constructor() {}
 
-  getTipoExpediente():Observable<TipoResponse>{
-    return this.http.get<TipoResponse>(this.tipoUrl + 'consultar');
+  getTipoExpediente():Observable<Tipo>{
+    return this.http.get<Tipo>(this.tipoUrl + 'consultar');
 
   }
 }
