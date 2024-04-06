@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterModule, RouterOutlet, Router } from '@angular/router';
 import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service';
 import { Tipo } from '../../services/tipo-expediente/tipo-response';
 
@@ -12,6 +12,7 @@ import { Tipo } from '../../services/tipo-expediente/tipo-response';
     RouterOutlet,
     RouterModule,
     ReactiveFormsModule,
+    
   ],
   templateUrl: './tipo-form.component.html',
   styleUrl: './tipo-form.component.css'
@@ -20,6 +21,7 @@ export class TipoFormComponent {
 
   private fb = inject(FormBuilder);
   private tipoEpedienteService = inject(TipoExpedienteService); //inyeccion de dependencias, inicializa el servicio
+  private router = inject(Router);
 
   form = this.fb.group({
     
@@ -42,6 +44,8 @@ export class TipoFormComponent {
         this.tipoEpedienteService.createTipoExpediente(tipodato)
           .subscribe(() => {
             // Manejar la respuesta o realizar acciones adicionales si es necesario
+            this.router.navigate(['tipo-expediente']);
+            location.reload(); // Recargar la página
           });
       } else {
         console.error('El formulario no es válido');
