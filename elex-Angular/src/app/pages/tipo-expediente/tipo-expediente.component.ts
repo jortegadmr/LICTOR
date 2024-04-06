@@ -26,7 +26,11 @@ export class TipoExpedienteComponent implements OnInit {
   public tipoExpedienteService = inject(TipoExpedienteService); //Llamada o Inyección del Service Donde está la logica
   
   ngOnInit(): void {
-    this.tipoResult$ = this.tipoExpedienteService.getTipoExpediente();
+    /* this.tipoResult$ = this.tipoExpedienteService.getTipoExpediente(); */
+    this.tipoExpedienteService.getTipoExpediente().subscribe((value:TipoResponse) =>{
+      console.log(value);
+
+    })
   }
 }
 
