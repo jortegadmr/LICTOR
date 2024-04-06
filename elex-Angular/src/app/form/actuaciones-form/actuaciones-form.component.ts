@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-actuaciones-form',
   standalone: true,
   imports: [  
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
+    RouterModule,
   ],
   templateUrl: './actuaciones-form.component.html',
   styleUrl: './actuaciones-form.component.css'
