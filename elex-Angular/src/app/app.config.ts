@@ -12,7 +12,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(withInterceptors([authInterceptor])),
-    importProvidersFrom(HttpClient, HttpClientModule, /* JwtInterceptorService, */ ErrorInterceptorService),
+    importProvidersFrom(HttpClient, HttpClientModule, ErrorInterceptorService /*, JwtInterceptorService */),
     
   ]
   
