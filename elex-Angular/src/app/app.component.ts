@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './shared/header/header.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -16,6 +16,7 @@ import { NavComponent } from './shared/nav/nav.component';
   imports: [
     RouterOutlet,
     RouterLink,
+    RouterModule,
     CommonModule,
     HeaderComponent,
     DashboardComponent,

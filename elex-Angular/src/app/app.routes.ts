@@ -22,27 +22,39 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
 
     { path: 'tipo-expediente', component: TipoExpedienteComponent, canActivate: [authGuard], 
-      children: [
-        { path: 'tipo-form', component: TipoFormComponent },
-      ]
+        children: [
+            { 
+                path: 'tipo-form', 
+                component: TipoFormComponent, 
+            },
+        ]
      },
     
     { path: 'actuaciones', component:ActuacionesComponent, canActivate: [authGuard],
-      children: [
-        { path: 'actuaciones-form', component: ActuacionesFormComponent }
-      ]
+        children: [
+            { 
+                path: 'actuaciones-form', 
+                component: ActuacionesFormComponent,
+            }
+        ]
      },
 
     { path: 'documentos', component: DocumentosComponent, canActivate: [authGuard],
-      children: [
-        { path: 'documentos-form', component: DocumentosFormComponent }
-      ]
+        children: [
+            { 
+                path: 'documentos-form', 
+                component: DocumentosFormComponent, 
+            }
+        ]
      },
 
     { path: 'expedientes', component: ExpedientesComponent, canActivate: [authGuard],
-      children: [
-        { path: 'expedientes-form', component: ExpedientesFormComponent }
-      ]
+        children: [
+            { 
+                path: 'expedientes-form', 
+                component: ExpedientesFormComponent,
+             }
+        ]
     },
 
 ];

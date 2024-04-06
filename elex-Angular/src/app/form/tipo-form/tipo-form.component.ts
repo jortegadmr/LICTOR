@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-tipo-form',
   standalone: true,
   imports: [
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
+    RouterModule
   ],
   templateUrl: './tipo-form.component.html',
   styleUrl: './tipo-form.component.css'

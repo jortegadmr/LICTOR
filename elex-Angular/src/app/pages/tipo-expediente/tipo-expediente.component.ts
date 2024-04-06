@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service';
 import { Tipo } from '../../services/tipo-expediente/tipo-response';
 import { AsyncPipe } from '@angular/common';
@@ -11,6 +11,7 @@ import { AsyncPipe } from '@angular/common';
   imports: [
     RouterLink,
     RouterOutlet,
+    RouterModule,
     AsyncPipe,
     TipoExpedienteComponent
   ],
