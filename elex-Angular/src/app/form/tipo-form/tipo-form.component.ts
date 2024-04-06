@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -15,5 +15,5 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
   styleUrl: './tipo-form.component.css'
 })
 export class TipoFormComponent {
-
+  private fb = inject(FormBuilder);
 }

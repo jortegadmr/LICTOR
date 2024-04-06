@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RouterLink, RouterOutlet, RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-actuaciones-form',
@@ -15,5 +15,5 @@ import { RouterLink, RouterOutlet, RouterModule } from '@angular/router';
   styleUrl: './actuaciones-form.component.css'
 })
 export class ActuacionesFormComponent {
-
+  private fb = inject(FormBuilder);
 }
