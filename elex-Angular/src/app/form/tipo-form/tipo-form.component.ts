@@ -27,16 +27,32 @@ export class TipoFormComponent {
     
   })
 
-  create(){
-
-    console.log(this.form.value);
-
-    const tipodato = this.form.value;
-
-    this.tipoEpedienteService.createTipoExpediente(tipodato)
-    .subscribe(()=>{
-      
-    })
-    
+  create() {
+    // Verificar si this.form no es nulo
+    if (this.form !== null) {
+      // Verificar si el formulario es válido antes de continuar
+      if (this.form.valid) {
+        // Obtener el nombre del formulario y proporcionar un valor predeterminado en caso de que sea undefined
+        const nombre = this.form.get('nombre')?.value ?? '';
+  
+        // Crear un objeto con el nombre
+        const tipodato: Tipo = { id: 0, nombre: nombre };
+  
+        // Llamar al servicio para crear el tipo de expediente
+        this.tipoEpedienteService.createTipoExpediente(tipodato)
+          .subscribe(() => {
+            // Manejar la respuesta o realizar acciones adicionales si es necesario
+          });
+      } else {
+        console.error('El formulario no es válido');
+      }
+    } else {
+      console.error('El formulario es nulo');
+    }
   }
+  
+  
+  
+  
+  
 }
