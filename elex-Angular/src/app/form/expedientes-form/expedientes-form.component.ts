@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { ExpedientesService } from '../../services/expedientes/expedientes.service';
 
 @Component({
   selector: 'app-expedientes-form',
@@ -17,4 +18,7 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 })
 export class ExpedientesFormComponent {
   private fb = inject(FormBuilder);
+  private expedientesService = inject(ExpedientesService); //inyeccion de dependencias, inicializa el servicio
+  private router = inject(Router);
+  
 }

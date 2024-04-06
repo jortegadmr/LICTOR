@@ -3,11 +3,20 @@
     <div class="row">
         <p>PAGINA DE EXPEDIENTES</p>
     </div>
+
+    <div class="text-end" >
+        <button class="btn btn-primary" routerLink="expedientes-form">Nuevo Expediente</button>
+    </div>
+
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+
     <div>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Expediente</th>
+                    <th>Exp</th>
                     <th>Fecha</th>
                     <th>Numero </th>
                     <th>Materia</th>

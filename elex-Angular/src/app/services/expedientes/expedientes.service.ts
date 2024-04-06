@@ -16,4 +16,19 @@ export class ExpedientesService {
   getExpedientes(): Observable<Expedientes>{
     return this.http.get<Expedientes>(this.expUrl + 'consultar');
   }
+
+  getExpediente(id: number): Observable<Expedientes>{
+    return this.http.get<Expedientes>(this.expUrl + 'consultar/' + id);
+  }
+  createExpediente(expediente: Expedientes): Observable<Expedientes> {
+    return this.http.post<Expedientes>(this.expUrl + 'insertar', expediente);
+  }
+
+  updateExpediente(id: number, expediente:Expedientes):Observable<Expedientes>{
+    return this.http.put<Expedientes>(this.expUrl + 'actualizar', expediente);
+  }
+
+  deleteExpediente(id: number):Observable<Expedientes>{
+    return this.http.delete<Expedientes>(this.expUrl + 'eliminar/' + id);
+  }
 }

@@ -18,7 +18,7 @@ import { Documentos } from '../../services/documentos/documentos-response';
 })
 export class DocumentosComponent {
 
-  public documentService = inject (DocumentosService); // Inyectamos el Servicio donde están las llamadas al servidor
+  /* public documentService = inject (DocumentosService); // Inyectamos el Servicio donde están las llamadas al servidor
 
   document: Documentos[]=[]; // Guardamos los datos devueltos por el Servicio
 
@@ -26,5 +26,5 @@ export class DocumentosComponent {
     this.documentService.getDocumentos().subscribe((data: Documentos[]) => {
       this.document = data;
     });
-  }
+  } */
 }
