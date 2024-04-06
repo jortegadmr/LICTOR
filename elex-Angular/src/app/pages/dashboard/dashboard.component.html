@@ -4,8 +4,26 @@
         <p>PAGINA DE INICIO/DASHBOARD</p>
     </div>
     <div>
-        <ul>
-            @for (user of usersService.users(); track user.id) {
+        @if (tipoResult$ | async; as resultadObject) {
+            <p>FUNCIONA</p>
+            <ul>
+                @for (item of resultadObject.data; track item.id) {
+                    <li>
+                        <app-tipo-expediente [tipoInfo]="item"/>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+
+
+
+
+
+
+
+  <!--  @for (user of usersService.users(); track user.id) {
 
                 <li>
                     <img
@@ -19,8 +37,4 @@
                     </a>
                 </li>
 
-            }
-            
-        </ul>
-    </div>
-</div>
+            } -->
