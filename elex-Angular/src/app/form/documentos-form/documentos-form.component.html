@@ -5,7 +5,23 @@
         
         <div class="mb-3 d-flex align-items-end">
             
+            <input type="text" name="nombre" placeholder="Nombre" formControlName="nombre" class="form-control me-2">
+            <input type="date" name="fecha" formControlName="fecha" class="form-control me-2">
+            <input type="text-area" name="descripcion" placeholder="Descripción" formControlName="descripcion" class="form-control me-2">
+
+            <select name="tipo" formControlName="tipo" class="form-select me-2">
+                <option [ngValue]="null" disabled selected>Seleccionar Expediente relacionado</option>
+                
+                    @for (actu of actuAciones; track actu.id) {
+                        <option [ngValue]="
+                                { id: actu.id, nombre: actu.nombre, fecha: actu.fecha, 
+                                descripcion: actu.descripcion, estado: actu.estado, 
+                                expediente: actu.expediente }">
+                            {{ actu.expediente.numero }}
+                        </option>
+                    }
             
+            </select>
 
             <button type="button" class="btn btn-light ms-2" routerLink="/documentos">Cancelar</button>
             <button type="submit" class="btn btn-primary">Crear</button>

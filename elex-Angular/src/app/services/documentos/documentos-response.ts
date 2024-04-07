@@ -9,7 +9,7 @@ export interface Documentos {
     tipo:        Tipo;
 }
 
-export interface Tipo {
+export interface Tipo {  // Actuaciones
     id:          number;
     nombre:      string;
     fecha:       string;
@@ -18,7 +18,7 @@ export interface Tipo {
     expediente:  TipoExpediente;
 }
 
-export interface TipoExpediente {
+export interface TipoExpediente { // Expedientes
     id:           number;
     fecha:        string;
     numero:       string;
@@ -33,7 +33,7 @@ export interface TipoExpediente {
     expediente:   ExpedienteExpediente;
 }
 
-export interface ExpedienteExpediente {
+export interface ExpedienteExpediente { // Tipos Expedientes
     id:     number;
     nombre: string;
 }

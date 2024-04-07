@@ -48,7 +48,7 @@ export class DocumentosFormComponent implements OnInit{
 
   expeDientes: Expedientes[] = []; // Guardamos los datos devueltos por el Servicio (TE)
   tiposExp: Tipo[]=[]; // Guardamos los datos devueltos por el Servicio (TE)
-  actuAciones: ActuacioneNombre[]=[]; // Guardamos los datos devueltos por el Servicio (TE)
+  actuAciones: Actuaciones[]=[]; // Guardamos los datos devueltos por el Servicio (TE)
 
   ngOnInit(): void {
     // RECIBIMOS LOS EXPEDIENTES DEL SERVICIO
