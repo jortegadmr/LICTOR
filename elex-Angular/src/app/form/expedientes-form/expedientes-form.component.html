@@ -1,17 +1,19 @@
 <div>
     <h2>Nuevo Expediente</h2>
 
-    <form>
+    <form [formGroup]="form">
         
             <div class="mb-3 d-flex align-items-end">
                 <!-- Aqui un desplegable de los tipos Expedientes -->
                 
-                <select id="tipoExpediente" name="tipoExpediente" formControlName="tipoExpediente" class="form-select me-2">
+                <select id="tipo" name="tipo" formControlName="tipo" class="form-select me-2">
                     <option value="" disabled selected>Seleccionar Tipo de Expediente</option>
-                    <!-- <option @for (tipo of tipos; track tipo.id)>{{ tipo.nombre }}</option> -->
+                    <!-- <option @for (tipo of tiposExp; track tipo.id)>
+                        {{ tiposExp.find.name}}
+                    </option> -->
                 </select>
 
-                <input type="date" id="date" name="date" formControlName="date" class="form-control me-2">
+                <input type="date" id="fecha" name="fecha" formControlName="fecha" class="form-control me-2">
                 <input type="text" id="numero" name="numero" placeholder="Numero" formControlName="numero" class="form-control me-2">
                 <input type="text" id="materia" name="materia" placeholder="Materia" formControlName="materia" class="form-control me-2">
                 <!-- Aqui un booleano  para estado -->

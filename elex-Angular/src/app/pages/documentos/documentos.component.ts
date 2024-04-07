@@ -18,13 +18,13 @@ import { Documentos } from '../../services/documentos/documentos-response';
 })
 export class DocumentosComponent {
 
-  /* public documentService = inject (DocumentosService); // Inyectamos el Servicio donde están las llamadas al servidor
+  public documentService = inject (DocumentosService); // Inyectamos el Servicio donde están las llamadas al servidor
 
   document: Documentos[]=[]; // Guardamos los datos devueltos por el Servicio
 
   ngOnInit(): void {  // Se ejecuta al inciar el componente, guardamos los datos en la variable "document"
-    this.documentService.getDocumentos().subscribe((data: Documentos[]) => {
+    this.documentService.getDocumentos().subscribe((data: any) => {
       this.document = data;
     });
-  } */
+  }
 }
