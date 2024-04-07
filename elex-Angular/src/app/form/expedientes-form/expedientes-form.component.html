@@ -1,4 +1,4 @@
-<div>
+<div class="container py-5 h-100">
     <h2>Nuevo Expediente</h2>
 
     <form [formGroup]="form" (ngSubmit)="create()" class="mt-4">
@@ -6,7 +6,7 @@
             <div class="mb-3 d-flex align-items-end">
                 <!-- Aqui un desplegable de los tipos Expedientes -->
                 
-                <select id="tipo" name="tipo" formControlName="expediente" class="form-select me-2">
+                <select id="expediente" name="expediente" formControlName="expediente" class="form-select me-2">
                     <option [ngValue]="null" disabled selected>Seleccionar Tipo de Expediente</option>
                     
                         @for (tipo of tiposExp; track tipo.id) {
@@ -46,7 +46,7 @@
 
                 <input type="text" id="consejeria" name="consejeria" placeholder="Consejeria" formControlName="consejeria" class="form-control me-2">
                 <input type="number" id="precio" name="precio" placeholder="Precio" formControlName="precio" class="form-control me-2">
-                <input type="text" id="descripcion" name="descripcion" placeholder="Descripción" formControlName="descripcion" class="form-control me-2">
+                <input type="text-area" id="descripcion" name="descripcion" placeholder="Descripción" formControlName="descripcion" class="form-control me-2">
                 
                 <button type="button" class="btn btn-light ms-2" routerLink="/expedientes">Cancelar</button>
                 <button type="submit" class="btn btn-primary">Crear</button>
