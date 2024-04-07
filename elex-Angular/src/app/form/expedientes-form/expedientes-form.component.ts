@@ -41,21 +41,21 @@ export class ExpedientesFormComponent implements OnInit {
   
 
   form = this.fb.group({
-    // EL FORMULARIO
-    expediente: this.fb.group({
-      id: [null, [Validators.required]], // Puede ser nulo o un número
-      nombre: ['', [Validators.required]] // Cadena de texto
-    }),
-    fecha: ['', [Validators.required]], // tipo fecha
-    numero: ['', [Validators.required]],
-    materia: ['', [Validators.required]],
-    estado: [false, [Validators.required]], // Booleano
-    responsable: ['', [Validators.required]],
-    responsable2: [null],
-    condicion: ['', [Validators.required]],
-    consejeria: ['', [Validators.required]],
-    precio: [0, [Validators.required]], // Numero
-    descripcion: ['', [Validators.required]],
+      // EL FORMULARIO
+      expediente: this.fb.group({
+        id: [null, [Validators.required]], // Puede ser nulo o un número
+        nombre: ['', [Validators.required]] // Cadena de texto
+      }),
+      fecha: ['', [Validators.required]], // tipo fecha
+      numero: ['', [Validators.required]],
+      materia: ['', [Validators.required]],
+      estado: [false, [Validators.required]], // Booleano
+      responsable: ['', [Validators.required]],
+      responsable2: [null],
+      condicion: ['', [Validators.required]],
+      consejeria: ['', [Validators.required]],
+      precio: [0, [Validators.required]], // Numero
+      descripcion: ['', [Validators.required]],
   })
 
   tiposExp: Tipo[]=[]; // Guardamos los datos devueltos por el Servicio
@@ -118,11 +118,13 @@ export class ExpedientesFormComponent implements OnInit {
           }
           
           console.log(expedientedato);
-          /* this.expedientesService.createExpediente(expedientedato) // Pasamos los datos al Servicio
+          this.expedientesService.createExpediente(expedientedato) // Pasamos los datos al Servicio
           .subscribe(()=>{
             this.router.navigate(['expedientes']);
+            console.log("Se ha creado correctamente el expediente");
+            alert("Se ha creado correctamente el expediente");
             location.reload();
-          }) */
+          })
 
       }
       else {console.error('El formulario no es válido');}
