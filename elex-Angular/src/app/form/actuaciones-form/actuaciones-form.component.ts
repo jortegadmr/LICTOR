@@ -42,6 +42,9 @@ export class ActuacionesFormComponent implements OnInit{
   public expedientesService = inject(ExpedientesService); //Inyeccion de dependencias, inicializa el servicio (TE)
   public tipoExpedienteService = inject(TipoExpedienteService); //Inyeccion de dependencias, inicializa el servicio de tipo de expediente (TE)
 
+  expeDientes: Expedientes[] = []; // Guardamos los datos devueltos por el Servicio (TE)
+  tiposExp: Tipo[]=[]; // Guardamos los datos devueltos por el Servicio (TE)
+
   
   ngOnInit(): void {
     // RECIBIMOS LOS EXPEDIENTES DEL SERVICIO
@@ -89,9 +92,7 @@ export class ActuacionesFormComponent implements OnInit{
     })
   })
 
-  expeDientes: Expedientes[] = []; // Guardamos los datos devueltos por el Servicio (TE)
-  tiposExp: Tipo[]=[]; // Guardamos los datos devueltos por el Servicio (TE)
-
+  
 
 
 
