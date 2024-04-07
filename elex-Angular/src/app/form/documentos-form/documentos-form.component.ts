@@ -82,7 +82,7 @@ export class DocumentosFormComponent implements OnInit{
     nombre: ['', [Validators.required]],
     fecha: ['', [Validators.required]],
     descripcion: ['', [Validators.required]],
-    archivo: ['', [Validators.required]],
+    archivo: null,
     tipo: this.fb.group({
         id: [null, [Validators.required]],
         nombre: ['', [Validators.required]],
