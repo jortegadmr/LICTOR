@@ -72,9 +72,28 @@ export class ActuacionesFormComponent implements OnInit{
     id: [null, [Validators.required]], // Puede ser nulo o un número
     nombre: ['', [Validators.required]], // Cadena de texto
     fecha: ['', [Validators.required]], // tipo fecha
+    descripcion: ['', [Validators.required]],
     estado: [false, [Validators.required]], // Booleano
+    expediente: this.fb.group({
+      id: [null, [Validators.required]], // Puede ser nulo o un número
+      nombre: ['', [Validators.required]], // Cadena de texto
+      fecha: ['', [Validators.required]], // tipo fecha
+      numero: ['', [Validators.required]],
+      materia: ['', [Validators.required]],
+      estado: [false, [Validators.required]], // Booleano
+      responsable: ['', [Validators.required]],
+      responsable2: [null],
+      descripcion: ['', [Validators.required]],
+      condicion: ['', [Validators.required]],
+      precio: [0, [Validators.required]], // Numero
+      consejeria: ['', [Validators.required]],
+      expediente: this.fb.group({
+        id: [null, [Validators.required]], // Puede ser nulo o un número
+        nombre: ['', [Validators.required]] // Cadena de texto
+        }),
+    })
+})
 
 
-    
-  })
+
 }
