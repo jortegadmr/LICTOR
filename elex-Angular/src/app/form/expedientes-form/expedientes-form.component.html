@@ -1,20 +1,34 @@
 <div class="container py-5 h-100">
-    <h2>Nuevo Expediente</h2>
+    
+    <h2>
 
-    <form [formGroup]="form" (ngSubmit)="create()" class="mt-4">
+       @if (expedienteExiste) {
+           Editar
+       } @else {
+           Nuevo
+       }
+       Expediente
+    </h2>
+
+    @if (form) {
+        <form [formGroup]="form" (ngSubmit)="create()" class="mt-4">
         
             <div class="mb-3 d-flex align-items-end">
-                <!-- Aqui un desplegable de los tipos Expedientes -->
+
+                <div class="me-2">
+                        <!-- Aqui un desplegable de los tipos Expedientes -->
+                                        
+                        <select id="expediente" name="expediente" formControlName="expediente" class="form-select me-2">
+                            <option [ngValue]="null" disabled selected>Seleccionar Tipo de Expediente</option>
+                            
+                                @for (tipo of tiposExp; track tipo.id) {
+                                    <option [ngValue]="{ id: tipo.id, nombre: tipo.nombre }">
+                                        {{ tipo.nombre }}
+                                    </option>
+                        }
+                        </select>
+                </div>
                 
-                <select id="expediente" name="expediente" formControlName="expediente" class="form-select me-2">
-                    <option [ngValue]="null" disabled selected>Seleccionar Tipo de Expediente</option>
-                    
-                        @for (tipo of tiposExp; track tipo.id) {
-                            <option [ngValue]="{ id: tipo.id, nombre: tipo.nombre }">
-                                {{ tipo.nombre }}
-                            </option>
-                }
-                </select>
 
                 <input type="date" id="fecha" name="fecha" formControlName="fecha" class="form-control me-2">
                 <input type="text" id="numero" name="numero" placeholder="Numero" formControlName="numero" class="form-control me-2">
@@ -27,7 +41,8 @@
 
                 <input type="text" id="responsable" name="responsable" placeholder="Responsable" formControlName="responsable" class="form-control me-2">
                 <input type="text" id="responsable2" name="responsable2" placeholder="Segundo Responsable" formControlName="responsable2" class="form-control me-2">
-
+            </div>
+            <div class="mb-3 d-flex align-items-end">
                 <!-- Condicion es un desplegable -->
                 <select id="condicion" name="condicion" formControlName="condicion" class="form-select me-2">
                     <option [ngValue]="null" disabled selected>Seleccionar Condicion</option>
@@ -49,9 +64,17 @@
                 <input type="text-area" id="descripcion" name="descripcion" placeholder="Descripción" formControlName="descripcion" class="form-control me-2">
                 
                 <button type="button" class="btn btn-light ms-2" routerLink="/expedientes">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Crear</button>
+                <button type="submit" class="btn btn-success">
+                    @if (expedienteExiste) {
+                        Actualizar
+                    } @else {
+                        Nuevo
+                    }
+                </button>
             
             </div>
     </form>
+    }
+
 </div>
 <router-outlet></router-outlet>

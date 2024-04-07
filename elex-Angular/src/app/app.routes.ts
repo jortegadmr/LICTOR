@@ -28,7 +28,7 @@ export const routes: Routes = [
                 component: TipoFormComponent, 
             },
             { 
-                path: ':id/:nombre', 
+                path: ':id/nombre', 
                 component: TipoFormComponent, 
             },
         ]
@@ -38,6 +38,10 @@ export const routes: Routes = [
         children: [
             { 
                 path: 'actuaciones-form', 
+                component: ActuacionesFormComponent,
+            },
+            {
+                path: ':id/editar', 
                 component: ActuacionesFormComponent,
             }
         ]
@@ -57,7 +61,11 @@ export const routes: Routes = [
             { 
                 path: 'expedientes-form', 
                 component: ExpedientesFormComponent,
-             }
+             },
+            {
+                path: ':id', 
+                component: ExpedientesFormComponent,
+            }
         ]
     },
 

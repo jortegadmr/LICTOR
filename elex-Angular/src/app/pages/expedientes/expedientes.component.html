@@ -27,6 +27,7 @@
                     <th>Consejeria</th>
                     <th>Precio</th>
                     <th>Descripcion</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -47,6 +48,13 @@
                         <td>{{expediente.consejeria}}</td>
                         <td>{{expediente.precio}}</td>
                         <td>{{expediente.descripcion}}</td>
+                        <td>
+                            <div>
+                                <a class="btn btn-light" routerLink={{expediente.id}}>Editar</a>
+                                <a class="btn btn-danger" routerLink="#">Borrar</a>
+                            </div>
+                        </td>
+
                     </tr>
                 }
             </tbody>

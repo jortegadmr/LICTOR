@@ -25,7 +25,7 @@ export class ExpedientesService {
   }
 
   updateExpediente(id: number, expediente:Expedientes):Observable<Expedientes>{
-    return this.http.put<Expedientes>(this.expUrl + 'actualizar', expediente);
+    return this.http.put<Expedientes>(this.expUrl + 'actualizar/'+ id, expediente);
   }
 
   deleteExpediente(id: number):Observable<Expedientes>{
