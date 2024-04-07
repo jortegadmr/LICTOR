@@ -1,51 +1,51 @@
-<div class="container">
-    <div class="row">
-        <p>PAGINA DE ACTUACIONES</p>
-    </div>
-
-    <div class="text-end" >
-        <button class="btn btn-primary" routerLink="actuaciones-form">Nueva Actuacion</button>
-    </div>
-
-    <div>
-        <router-outlet></router-outlet>
-    </div>
+<body>
+    <div class="container">
     
-    <div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Expediente</th>
-                    <th>Nombre</th>
-                    <th>Tipo Expediente</th>
-                    <th>Fecha </th>
-                    <th>Estado</th>
-                    <th>Descripcion</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (actuacion of actuaciones; track actuacion.id) {
+    
+        <div class="text-end" >
+            <button class="btn btn-primary" routerLink="actuaciones-form">Nueva Actuacion</button>
+        </div>
+    
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+        
+        <div class="table-container">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>{{actuacion.expediente.numero}}</td>
-                        <td>{{actuacion.nombre}}</td>
-                        <td>{{actuacion.expediente.expediente.nombre}}</td>
-                        <td>{{actuacion.fecha}}</td>
-                        @if (actuacion.estado) {
-                            <td>Viva</td>
-                        }@else {
-                            <td>Archivada</td>
-                        }
-                        <td>{{actuacion.descripcion}}</td>
-                        <td>
-                            <div>
-                                <a class="btn btn-light" routerLink={{actuacion.id}}>Editar</a>
-                                <a class="btn btn-danger" routerLink="#">Borrar</a>
-                            </div>
-                        </td>
-                }
-            </tbody>
-        </table>
+                        <th>Expediente</th>
+                        <th>Nombre</th>
+                        <th>Tipo Expediente</th>
+                        <th>Fecha </th>
+                        <th>Estado</th>
+                        <th>Descripcion</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (actuacion of actuaciones; track actuacion.id) {
+                        <tr>
+                            <td>{{actuacion.expediente.numero}}</td>
+                            <td>{{actuacion.nombre}}</td>
+                            <td>{{actuacion.expediente.expediente.nombre}}</td>
+                            <td>{{actuacion.fecha}}</td>
+                            @if (actuacion.estado) {
+                                <td>Viva</td>
+                            }@else {
+                                <td>Archivada</td>
+                            }
+                            <td>{{actuacion.descripcion}}</td>
+                            <td>
+                                <div>
+                                    <a class="btn btn-light" routerLink={{actuacion.id}}>Editar</a>
+                                    <a class="btn btn-danger" routerLink="#">Borrar</a>
+                                </div>
+                            </td>
+                    }
+                </tbody>
+            </table>
+        </div>
+    
     </div>
-
-</div>
+</body>

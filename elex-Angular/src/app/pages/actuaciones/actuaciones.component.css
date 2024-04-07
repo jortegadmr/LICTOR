@@ -1,0 +1,50 @@
+.table-container {
+    max-height: 600px; /* Altura máxima para la tabla */
+    overflow-y: auto; /* Scroll vertical */
+}
+
+/* Estilos para el botón btn-primary */
+.btn-primary {
+    background-color: #7a8d96;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #166488;
+}
+
+/* Estilos para el botón btn-light */
+.btn-light {
+    background-color: #f0f6fd;
+    color: #343a40;
+    border: 1px solid #ced4da;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-light:hover {
+    background-color: #c1dcf7;
+    color: #212529;
+}
+
+/* Estilos para el botón btn-danger */
+.btn-danger {
+    background-color: #c47f86;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-danger:hover {
+    background-color: #a82d2d;
+}

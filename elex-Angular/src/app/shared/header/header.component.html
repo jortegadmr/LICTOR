@@ -1,23 +1,24 @@
 <header>
-    <div class="header">
-        <div class="row">
-            <div class="col">
-                <h1>LICTOR</h1>
+    <div class="navbar mb-3"> <!-- Agregamos la clase mb-3 para un margen inferior -->
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h1 class="mx-auto">LICTOR</h1>
             </div>
-            <div class="col text-center">
-                <p>IMAGEN</p>
-            </div>
-            <div class="col text-end">
-                <button (click)="logout()"><fa-icon [icon]="faUser"></fa-icon>CERRAR SESIÓN</button> <!-- mirar los iconos fontawesome -->
-            </div>
-            
-        </div>
-        <div class="row">
-            <div class="col text-center">
-                <p>Bienvenido USER</p>
-            </div>
-            
+            <img src="../../assets/logo-entero.png" alt="Logo" class="navbar-logo">
+            <button class="btn btn-outline-light" (click)="logout()">
+                <fa-icon [icon]="faUser"></fa-icon>
+                <span style="margin-left: 10px;">CERRAR SESIÓN</span>
+            </button>
         </div>
     </div>
+    
+    @if (userLoginOn) { <div class="container mt-4"> <!-- Agregamos la clase mt-3 para un margen superior -->
+        <div class="row">
+            <div class="col text-center">
+                <p class="fs-5 text-muted">Bienvenido USER</p>
+            </div>
+        </div>
+    </div>}
+   
     
 </header>

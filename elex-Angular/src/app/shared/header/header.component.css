@@ -1,3 +1,19 @@
 h1 {
     color: rgb(255, 179, 0);
+    font-size: 60px;
+}
+
+.navbar-logo {
+    height: 75px; /* Ajusta la altura según necesites */
+    width: auto; /* Ancho automático para mantener la proporción */
+}
+
+.btn-outline-light {
+    color: #cd4d4d; /* Color del texto */
+    border-color: #cd4d4d; /* Color del borde */
+}
+
+.btn-outline-light:hover {
+    color: #ffffff;
+    background-color: #cd4d4d;
 }

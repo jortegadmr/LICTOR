@@ -23,6 +23,8 @@ import { LoginService } from '../../services/auth/login.service';
 })
 export class HeaderComponent {
 
+  userLoginOn: boolean = false;
+
 /* ICONOS FONTAWESOME  */
   faUser = faUser;
   faCode = faCode;
@@ -35,6 +37,13 @@ export class HeaderComponent {
 /* -----------------------  */
 
 constructor(private loginService: LoginService, private router: Router) {}
+ngOnInit(): void {
+  // Suscribirse al BehaviorSubject para recibir actualizaciones del estado de inicio de sesión
+  this.loginService.currentUserLoginOn.subscribe((loggedIn: boolean) => {
+    // Actualizar el estado userLoginOn
+    this.userLoginOn = loggedIn;
+  });
+}
 logout()
 {
   this.loginService.logout();

@@ -44,7 +44,12 @@ export class ExpedientesFormComponent implements OnInit {
   ngOnInit(): void {
 
    const idExpediente = this.route.snapshot.paramMap.get('id');
-
+   
+   this.tipoExpedienteService.getTipoExpediente()
+   .subscribe( (tipos: any) =>{  
+     console.log(tipos);
+     this.tiposExp=tipos;
+       });
     if (idExpediente){
 
       this.expedientesService.getExpediente(parseInt(idExpediente))
@@ -74,11 +79,7 @@ export class ExpedientesFormComponent implements OnInit {
 
     // RECIBIMOS LOS TIPOS DE EXPEDIENTES DEL SERVICIO
     // Tenemos que añadirlos al formulario en el Select
-    this.tipoExpedienteService.getTipoExpediente()
-    .subscribe( (tipos: any) =>{  
-      console.log(tipos);
-      this.tiposExp=tipos;
-        });
+    
       }else{
 
           this.form = this.fb.group({

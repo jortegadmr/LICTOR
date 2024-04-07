@@ -13,10 +13,10 @@ nav{
     position: absolute;
     top: 0;
     bottom: 0;
-    height: 100%;
+    height: flex;
     left: 0;
-    width: 90px;
-    background: #3a505c;
+    width: 0;
+    background: #7a8d96;
     width: 90px;
     overflow: hidden;
     transition: width 0.2s linear;
@@ -50,11 +50,55 @@ span{
 
 a:hover{
     background: aliceblue;
-    color: #3a505c;
+    color: #32596b;
 }
 
 nav:hover{
     width: 280px;
     transition: all 0.5s ease;
+    background: #32596b;
 
+}
+/* Estilos para el botón btn-light */
+.btn-light {
+    background-color: #f0f6fd;
+    color: #343a40;
+    border: 1px solid #ced4da;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-light:hover {
+    background-color: #c1dcf7;
+    color: #212529;
+}
+
+/* Estilos para el botón btn-danger */
+.btn-danger {
+    background-color: #c47f86;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-danger:hover {
+    background-color: #a82d2d;
+}
+.btn-primary {
+    background-color: #7a8d96;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #166488;
 }
