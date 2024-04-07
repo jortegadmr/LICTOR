@@ -110,6 +110,61 @@ export class DocumentosFormComponent implements OnInit{
       })
   })
 
+  create(){
+    if (this.form !== null ) {
+      if (this.form){
+
+        
+        const documentoDato = { // Documentos (formato)
+          id: 0,
+          nombre: this.form.get('nombre')?.value ?? '',
+          fecha: this.form.get('fecha') ?.value ?? '',
+          descripcion: this.form.get('descripcion') ?.value ?? '',
+          archivo:null, // Esta nulo hasta que podamos subir el archivo
+          // Tipo (formato)
+          tipo: { 
+              id: this.form.get('actuaciones.id')?.value ?? 0,
+              nombre: this.form.get('actuaciones.nombre')?.value ?? '',
+              fecha: this.form.get('actuaciones.fecha')?.value ?? '',
+              descripcion: this.form.get('actuaciones.descripcion')?.value ?? '',
+              estado: this.form.get('actuaciones.estado')?.value ?? false,
+              // TipoExpediente (formato)
+              expediente: {   
+                  id: this.form.get('actuaciones.expediente.id')?.value ?? 0,
+                  fecha: this.form.get('actuaciones.expediente.fecha')?.value ?? '',
+                  numero: this.form.get('actuaciones.expediente.numero')?.value ?? '',
+                  materia: this.form.get('actuaciones.expediente.materia')?.value ?? '',
+                  estado: this.form.get('actuaciones.expediente.estado')?.value ?? false,
+                  responsable: this.form.get('actuaciones.expediente.responsable')?.value ?? '',
+                  responsable2: this.form.get('actuaciones.expediente.responsable2')?.value ?? '',
+                  descripcion: this.form.get('actuaciones.expediente.descripcion')?.value ?? '',
+                  condicion: this.form.get('actuaciones.expediente.condicion')?.value ?? '',
+                  precio: this.form.get('actuaciones.expediente.precio')?.value ?? 0,
+                  consejeria: this.form.get('actuaciones.expediente.consejeria')?.value ?? '',
+                  // ExpedienteExpediente (formato)
+                  expediente: { 
+                      id: this.form.get('actuaciones.expediente.expediente.id')?.value ?? 0,
+                      nombre: this.form.get('actuaciones.expediente.expediente.nombre')?.value ?? '',
+                    }
+                }
+            }
+        }
+
+
+        this.docService.createDocumento(documentoDato)
+        .subscribe( (resp: any) => {
+          console.log(resp);
+          this.router.navigate(['documentos']);
+          alert("Se ha creado correctamente el Documento");
+
+          location.reload();
+        });
+      }
+      else {console.error('El formulario no es válido');}
+    } 
+    else {console.error('El formulario es nulo');}
+  }
+
   
  
   
