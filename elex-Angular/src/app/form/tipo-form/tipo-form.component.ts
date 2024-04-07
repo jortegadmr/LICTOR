@@ -17,18 +17,8 @@ import { Tipo } from '../../services/tipo-expediente/tipo-response';
   templateUrl: './tipo-form.component.html',
   styleUrl: './tipo-form.component.css'
 })
-export class TipoFormComponent implements OnInit {
-  ngOnInit(): void {
-    const id =this.route.snapshot.paramMap.get('id');
-
-    if (id){
-      this.tipoExpedienteService.getTipoExpediente(parseInt(id))
-      .subscribe( (tipos: any) =>{
-        
-      })
-    }
-    
-  }
+export class TipoFormComponent {
+ 
 
   private fb = inject(FormBuilder);
   private tipoExpedienteService = inject(TipoExpedienteService); //inyeccion de dependencias, inicializa el servicio
