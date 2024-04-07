@@ -94,7 +94,7 @@ export class ActuacionesFormComponent implements OnInit{
 
   create(){
     if (this.form !== null ) {
-      if (this.form.valid){
+      if (this.form){
 
         // Declaración de la variable condicion
         let nombreConst: ActuacioneNombre = ActuacioneNombre.CitacionYEmplazamiento; // ENUM del RESPONSE tienen que coincidir los nombres
