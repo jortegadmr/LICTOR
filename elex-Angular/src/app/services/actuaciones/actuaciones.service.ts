@@ -18,7 +18,7 @@ export class ActuacionesService {
   }
 
   getActuacion(id: number): Observable<Actuaciones>{
-    return this.http.get<Actuaciones>(this.actUrl + 'consultar/' + id);
+    return this.http.get<Actuaciones>(this.actUrl + id);
   }
 
   createActuacion(actuacion: Actuaciones): Observable<Actuaciones> {

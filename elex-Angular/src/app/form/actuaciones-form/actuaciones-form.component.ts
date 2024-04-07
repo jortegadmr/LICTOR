@@ -55,12 +55,27 @@ export class ActuacionesFormComponent implements OnInit {
 
     const actuacionesId = this.route.snapshot.paramMap.get('id');
 
+     // RECIBIMOS LOS EXPEDIENTES DEL SERVICIO
+     this.expedientesService.getExpedientes()
+     .subscribe((expedientes: any) => {
+       console.log(expedientes);
+       this.expeDientes = expedientes;
+     });
+   // RECIBIMOS LOS TIPOS DE EXPEDIENTES DEL SERVICIO
+   this.tipoExpedienteService.getTipoExpediente()
+     .subscribe((tipos: any) => {
+       console.log(tipos);
+       this.tiposExp = tipos;
+     });
+
     if (actuacionesId) {
 
       this.actuacionesService.getActuacion(parseInt(actuacionesId))
-        .subscribe((actuaciones: any) => {
+        .subscribe((actuaciones: Actuaciones) => {
 
           this.actuacionesExiste = actuaciones
+          console.log(this.actuacionesExiste);
+          
 
           // EL FORMULARIO
           this.form = this.fb.group({
@@ -92,18 +107,7 @@ export class ActuacionesFormComponent implements OnInit {
           })
         })
 
-      // RECIBIMOS LOS EXPEDIENTES DEL SERVICIO
-      this.expedientesService.getExpedientes()
-        .subscribe((expedientes: any) => {
-          console.log(expedientes);
-          this.expeDientes = expedientes;
-        });
-      // RECIBIMOS LOS TIPOS DE EXPEDIENTES DEL SERVICIO
-      this.tipoExpedienteService.getTipoExpediente()
-        .subscribe((tipos: any) => {
-          console.log(tipos);
-          this.tiposExp = tipos;
-        });
+     
     } else {
 
       this.form = this.fb.group({
