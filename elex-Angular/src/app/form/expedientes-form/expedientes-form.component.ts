@@ -3,12 +3,12 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { ExpedientesService } from '../../services/expedientes/expedientes.service';
 
-import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service'; //Importar el Servicio de tipo de expediente
-import { TipoExpedienteComponent } from "../../pages/tipo-expediente/tipo-expediente.component"; //Importar el Servicio adicional 
-import { Tipo } from '../../services/tipo-expediente/tipo-response';
+import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service'; //Importar el Servicio de tipo de expediente (TE)
+import { TipoExpedienteComponent } from "../../pages/tipo-expediente/tipo-expediente.component"; //Importar el Servicio adicional   (TE)
+import { Tipo } from '../../services/tipo-expediente/tipo-response'; // Importar el Servicio de tipo de expediente (TE)
 import { AsyncPipe } from '@angular/common';
 
-import { NgFor, NgIf, NgForOf } from '@angular/common';
+
 import { Expedientes } from '../../services/expedientes/expedientes-response';
 import { Condicion } from '../../services/expedientes/expedientes-response';
 @Component({
@@ -23,11 +23,7 @@ import { Condicion } from '../../services/expedientes/expedientes-response';
         ReactiveFormsModule,
         TipoExpedienteComponent,
         AsyncPipe,
-        NgFor,
-        NgIf,
-        NgForOf,
-        
-        
+
     ]
 })
 export class ExpedientesFormComponent implements OnInit {
@@ -36,7 +32,7 @@ export class ExpedientesFormComponent implements OnInit {
   private expedientesService = inject(ExpedientesService); //Inyeccion de dependencias, inicializa el servicio
   private router = inject(Router);
 
-  public tipoExpedienteService = inject(TipoExpedienteService); //Inyeccion de dependencias, inicializa el servicio de tipo de expediente (adicional)
+  public tipoExpedienteService = inject(TipoExpedienteService); //Inyeccion de dependencias, inicializa el servicio de tipo de expediente ((TE))
 
   
 
@@ -58,7 +54,7 @@ export class ExpedientesFormComponent implements OnInit {
       descripcion: ['', [Validators.required]],
   })
 
-  tiposExp: Tipo[]=[]; // Guardamos los datos devueltos por el Servicio
+  tiposExp: Tipo[]=[]; // Guardamos los datos devueltos por el Servicio (TE)
   ngOnInit(): void {
     // RECIBIMOS LOS TIPOS DE EXPEDIENTES DEL SERVICIO
     // Tenemos que añadirlos al formulario en el Select
