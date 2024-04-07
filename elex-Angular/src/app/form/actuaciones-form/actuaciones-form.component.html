@@ -1,5 +1,5 @@
 <div class="container py-5 h-100">
-    <h2>Nuevo Expediente</h2>
+    <h2>Nueva Actuacion</h2>
 
     <form [formGroup]="form" (ngSubmit)="console()" class="mt-4">
         
@@ -10,13 +10,18 @@
                     <option [ngValue]="null" disabled selected>Seleccionar Expediente</option>
                     
                         @for (tipo of expeDientes; track tipo.id) {
-                            <option [ngValue]="{ id: tipo.id, nombre: tipo.numero }">
+                            <option [ngValue]="
+                                    { id: tipo.id, fecha: tipo.fecha, numero: tipo.numero, 
+                                    materia: tipo.materia, estado: tipo.estado, responsable: tipo.responsable, 
+                                    responsable2: tipo.responsable2, descripcion: tipo.descripcion, 
+                                    condicion: tipo.condicion, precio: tipo.precio, consejeria: tipo.consejeria, 
+                                    expediente: tipo.expediente }"> <!-- Valores del Expediente -->
                                 {{ tipo.numero }}
                             </option>
                 }
                 </select>
                 <!-- Actuacion Nombre Desplegable -->
-                <select id="actuacionNombre" name="actuacionNombre" formControlName="actuacionNombre" class="form-select me-2">
+                <select id="nombre" name="nombre" formControlName="nombre" class="form-select me-2">
                     <option [ngValue]="null" disabled selected>Nombre</option>
                     
                         <option>
@@ -36,7 +41,7 @@
                         </option>
                 </select>
 
-                <select id="expediente" name="expediente" formControlName="expediente" class="form-select me-2">
+                <!-- <select id="expediente" name="expediente" formControlName="expediente" class="form-select me-2">
                     <option [ngValue]="null" disabled selected>Seleccionar Tipo de Expediente</option>
                     
                         @for (tipo of tiposExp; track tipo.id) {
@@ -44,7 +49,7 @@
                                 {{ tipo.nombre }}
                             </option>
                 }
-                </select>
+                </select> -->
 
                 <input type="date" id="fecha" name="fecha" formControlName="fecha" class="form-control me-2">
                  <!-- Aqui un booleano  para estado -->
@@ -54,6 +59,8 @@
                 </div>
                 <input type="text-area" id="descripcion" name="descripcion" placeholder="Descripcion" formControlName="descripcion" class="form-control me-2">
 
+                <button type="button" class="btn btn-light ms-2" routerLink="/expedientes">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Crear</button>
             </div>
     </form>
 </div>

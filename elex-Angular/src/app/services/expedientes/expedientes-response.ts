@@ -24,4 +24,8 @@ export enum Condicion {
 export interface Expediente {
     id:     number;
     nombre: string;
+    fecha:  string;
+    descripcion: string;
+    estado: boolean;
+    expediente: ;
 }

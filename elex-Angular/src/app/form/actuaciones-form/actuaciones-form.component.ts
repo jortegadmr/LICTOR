@@ -67,6 +67,14 @@ export class ActuacionesFormComponent implements OnInit{
   }
 
   form = this.fb.group({
+    // EL FORMULARIO
+
+    id: [null, [Validators.required]], // Puede ser nulo o un número
+    nombre: ['', [Validators.required]], // Cadena de texto
+    fecha: ['', [Validators.required]], // tipo fecha
+    estado: [false, [Validators.required]], // Booleano
+
+
     
   })
 }
