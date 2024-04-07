@@ -152,10 +152,13 @@ export class ExpedientesFormComponent implements OnInit {
             console.log(expedientedato);
           this.expedientesService.updateExpediente(this.expedienteExiste.id, expedientedato) // Pasamos los datos al Servicio
           .subscribe(()=>{
-            this.router.navigate(['expedientes']);
+            
             console.log("Se ha actualizado correctamente el expediente");
             alert("Se ha actualizado correctamente el expediente");
-            location.reload();
+           
+              this.router.navigate(['expedientes']).then(() => {
+                window.location.reload();
+              })
           })
 
           }else {
@@ -172,10 +175,10 @@ export class ExpedientesFormComponent implements OnInit {
 
       }
       else {console.error('El formulario no es válido');}
-      alert("El formulario no es válido");
+      
 
     } 
     else {console.error('El formulario es nulo');}
-    alert("El formulario es nulo");
+    
   }
 }
