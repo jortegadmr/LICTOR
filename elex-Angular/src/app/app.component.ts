@@ -6,6 +6,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { NavComponent } from './shared/nav/nav.component';
+import { NgFor, NgIf, NgForOf } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
@@ -21,7 +23,11 @@ import { NavComponent } from './shared/nav/nav.component';
     HeaderComponent,
     DashboardComponent,
     FontAwesomeModule,
-    NavComponent
+    NavComponent,
+    NgFor,
+    NgIf,
+    NgForOf,
+ 
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

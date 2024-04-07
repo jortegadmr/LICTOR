@@ -1,16 +1,19 @@
 <div>
     <h2>Nuevo Expediente</h2>
 
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="console()" class="mt-4">
         
             <div class="mb-3 d-flex align-items-end">
                 <!-- Aqui un desplegable de los tipos Expedientes -->
                 
-                <select id="tipo" name="tipo" formControlName="tipo" class="form-select me-2">
-                    <option value="" disabled selected>Seleccionar Tipo de Expediente</option>
-                    <!-- <option @for (tipo of tiposExp; track tipo.id)>
-                        {{ tiposExp.find.name}}
-                    </option> -->
+                <select id="tipo" name="tipo" formControlName="expediente" class="form-select me-2">
+                    <option [ngValue]="null" disabled selected>Seleccionar Tipo de Expediente</option>
+                    
+                        @for (tipo of tiposExp; track tipo.id) {
+                            <option [ngValue]="{ id: tipo.id, nombre: tipo.nombre }">
+                                {{ tipo.nombre }}
+                            </option>
+                }
                 </select>
 
                 <input type="date" id="fecha" name="fecha" formControlName="fecha" class="form-control me-2">
@@ -24,12 +27,28 @@
 
                 <input type="text" id="responsable" name="responsable" placeholder="Responsable" formControlName="responsable" class="form-control me-2">
                 <input type="text" id="responsable2" name="responsable2" placeholder="Segundo Responsable" formControlName="responsable2" class="form-control me-2">
-                <input type="text" id="condicion" name="condicion" placeholder="Condicion" formControlName="condicion" class="form-control me-2">
+
+                <!-- Condicion es un desplegable -->
+                <select id="condicion" name="condicion" formControlName="condicion" class="form-select me-2">
+                    <option [ngValue]="null" disabled selected>Seleccionar Condicion</option>
+                    
+                        <option>
+                            confidencial
+                        </option>
+                        <option>
+                            en seguimiento
+                        </option>
+                        <option>
+                            urgente
+                        </option>
+                    
+                </select>
+
                 <input type="text" id="consejeria" name="consejeria" placeholder="Consejeria" formControlName="consejeria" class="form-control me-2">
-                <input type="text" id="precio" name="precio" placeholder="Precio" formControlName="precio" class="form-control me-2">
+                <input type="number" id="precio" name="precio" placeholder="Precio" formControlName="precio" class="form-control me-2">
                 <input type="text" id="descripcion" name="descripcion" placeholder="Descripción" formControlName="descripcion" class="form-control me-2">
                 
-                <button type="button" class="btn btn-light ms-2" routerLink="/tipo-expediente">Cancelar</button>
+                <button type="button" class="btn btn-light ms-2" routerLink="/expedientes">Cancelar</button>
                 <button type="submit" class="btn btn-primary">Crear</button>
             
             </div>

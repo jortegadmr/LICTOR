@@ -8,6 +8,7 @@ import { TipoExpedienteComponent } from "../../pages/tipo-expediente/tipo-expedi
 import { Tipo } from '../../services/tipo-expediente/tipo-response';
 import { AsyncPipe } from '@angular/common';
 
+import { NgFor, NgIf, NgForOf } from '@angular/common';
 @Component({
     selector: 'app-expedientes-form',
     standalone: true,
@@ -20,6 +21,9 @@ import { AsyncPipe } from '@angular/common';
         ReactiveFormsModule,
         TipoExpedienteComponent,
         AsyncPipe,
+        NgFor,
+        NgIf,
+        NgForOf
         
     ]
 })
@@ -32,17 +36,20 @@ export class ExpedientesFormComponent implements OnInit {
   public tipoExpedienteService = inject(TipoExpedienteService); //Inyeccion de dependencias, inicializa el servicio de tipo de expediente (adicional)
 
   form = this.fb.group({
-    //CREAMOS EL FORMULARIO
-    tipo: ['', [Validators.required]],
-    fecha: ['', [Validators.required]],
+    // EL FORMULARIO
+    expediente: this.fb.group({
+      id: [null, [Validators.required]], // Puede ser nulo o un número
+      nombre: ['', [Validators.required]] // Cadena de texto
+    }),
+    fecha: ['', [Validators.required]], // tipo fecha
     numero: ['', [Validators.required]],
     materia: ['', [Validators.required]],
-    estado: ['', [Validators.required]],
+    estado: [false, [Validators.required]], // Booleano
     responsable: ['', [Validators.required]],
-    responsable2: ['', [Validators.required]],
+    responsable2: [null],
     condicion: ['', [Validators.required]],
     consejeria: ['', [Validators.required]],
-    precio: ['', [Validators.required]],
+    precio: [0, [Validators.required]], // Numero
     descripcion: ['', [Validators.required]],
   })
 
@@ -56,4 +63,12 @@ export class ExpedientesFormComponent implements OnInit {
       this.tiposExp=tipos;
     });
   }
+
+  console(){
+
+    console.log(this.form.value);
+  }
+
+
+
 }
