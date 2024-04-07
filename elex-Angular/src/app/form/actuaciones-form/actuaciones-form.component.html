@@ -1,7 +1,15 @@
 <div class="container py-5 h-100">
-    <h2>Nueva Actuacion</h2>
+    <h2>
+        @if (actuacionesExiste) {
+            Editar
+        } @else {
+            Nueva
+        }
+        Actuacion
+    </h2>
 
-    <form [formGroup]="form" (ngSubmit)="create()" class="mt-4">
+    @if (form) {
+        <form [formGroup]="form" (ngSubmit)="create()" class="mt-4">
         
             <div class="mb-3 d-flex align-items-end">
                  <!-- Aqui un desplegable de los Expedientes -->
@@ -48,10 +56,18 @@
                     <label for="estado" class="form-check-label">Estado vivo</label>
                 </div>
                 <input type="text-area" id="descripcion" name="descripcion" placeholder="Descripcion" formControlName="descripcion" class="form-control me-2">
-
+        
                 <button type="button" class="btn btn-light ms-2" routerLink="/actuaciones">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Crear</button>
+                <button type="submit" class="btn btn-primary">
+                    @if (actuacionesExiste) {
+                        Actualizar
+                    }@else {
+                        Crear
+                    }
+                </button>
             </div>
-    </form>
+        </form>
+        
+    }
 </div>
                

@@ -56,8 +56,8 @@ export class ExpedientesFormComponent implements OnInit {
            this.form = this.fb.group({
            
             expediente: this.fb.group({
-              id: [expediente.id, [Validators.required]], // Puede ser nulo o un número
-              nombre: [expediente.nombre, [Validators.required]] // Cadena de texto
+              id: [expediente.expediente.id, [Validators.required]], // Puede ser nulo o un número
+              nombre: [expediente.expediente.nombre, [Validators.required]] // Cadena de texto
             }),
             fecha: [expediente.fecha, [Validators.required]], // tipo fecha
             numero: [expediente.numero, [Validators.required]],

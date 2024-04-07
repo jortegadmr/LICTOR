@@ -66,26 +66,26 @@ export class ActuacionesFormComponent implements OnInit {
           this.form = this.fb.group({
 
 
-            id: [null, [Validators.required]], // Puede ser nulo o un número
-            nombre: ['', [Validators.required]], // Cadena de texto
-            fecha: ['', [Validators.required]], // tipo fecha
-            descripcion: ['', [Validators.required]],
-            estado: [false, [Validators.required]], // Booleano
+            id: [actuaciones.id, [Validators.required]], // Puede ser nulo o un número
+            nombre: [actuaciones.nombre, [Validators.required]], // Cadena de texto
+            fecha: [ actuaciones.fecha, [Validators.required]], // tipo fecha
+            descripcion: [ actuaciones.descripcion, [Validators.required]],
+            estado: [ actuaciones.estado, [Validators.required]], // Booleano
             expediente: this.fb.group({
-              id: [null, [Validators.required]], // Puede ser nulo o un número
-              fecha: ['', [Validators.required]], // tipo fecha
-              numero: ['', [Validators.required]],
-              materia: ['', [Validators.required]],
-              estado: [false, [Validators.required]], // Booleano
-              responsable: ['', [Validators.required]],
-              responsable2: [null],
-              descripcion: ['', [Validators.required]],
-              condicion: ['', [Validators.required]],
-              precio: [0, [Validators.required]], // Numero
-              consejeria: ['', [Validators.required]],
+              id: [ actuaciones.expediente.id, [Validators.required]], // Puede ser nulo o un número
+              fecha: [  actuaciones.expediente.fecha, [Validators.required]], // tipo fecha
+              numero: [ actuaciones.expediente.numero, [Validators.required]],
+              materia: [  actuaciones.expediente.materia, [Validators.required]],
+              estado: [ actuaciones.expediente.estado, [Validators.required]], // Booleano
+              responsable: [  actuaciones.expediente.responsable, [Validators.required]],
+              responsable2: [ actuaciones.expediente.responsable2],
+              descripcion: [  actuaciones.expediente.descripcion, [Validators.required]],
+              condicion: [  actuaciones.expediente.condicion, [Validators.required]],
+              precio: [  actuaciones.expediente.precio, [Validators.required]], // Numero
+              consejeria: [ actuaciones.expediente.consejeria, [Validators.required]],
               expediente: this.fb.group({
-                id: [null, [Validators.required]], // Puede ser nulo o un número
-                nombre: ['', [Validators.required]] // Cadena de texto
+                id: [ actuaciones.expediente.expediente.id, [Validators.required]], // Puede ser nulo o un número
+                nombre: [ actuaciones.expediente.expediente.nombre, [Validators.required]] // Cadena de texto
               }),
             })
 
