@@ -42,11 +42,7 @@ export class ActuacionesFormComponent implements OnInit{
   public expedientesService = inject(ExpedientesService); //Inyeccion de dependencias, inicializa el servicio (TE)
   public tipoExpedienteService = inject(TipoExpedienteService); //Inyeccion de dependencias, inicializa el servicio de tipo de expediente (TE)
 
-  expeDientes: Expedientes[] = []; // Guardamos los datos devueltos por el Servicio (TE)
-  tiposExp: Tipo[]=[]; // Guardamos los datos devueltos por el Servicio (TE)
-
-
-
+  
   ngOnInit(): void {
     // RECIBIMOS LOS EXPEDIENTES DEL SERVICIO
     this.expedientesService.getExpedientes()
@@ -76,7 +72,6 @@ export class ActuacionesFormComponent implements OnInit{
     estado: [false, [Validators.required]], // Booleano
     expediente: this.fb.group({
       id: [null, [Validators.required]], // Puede ser nulo o un número
-      nombre: ['', [Validators.required]], // Cadena de texto
       fecha: ['', [Validators.required]], // tipo fecha
       numero: ['', [Validators.required]],
       materia: ['', [Validators.required]],
@@ -92,7 +87,11 @@ export class ActuacionesFormComponent implements OnInit{
         nombre: ['', [Validators.required]] // Cadena de texto
         }),
     })
-})
+  })
+
+  expeDientes: Expedientes[] = []; // Guardamos los datos devueltos por el Servicio (TE)
+  tiposExp: Tipo[]=[]; // Guardamos los datos devueltos por el Servicio (TE)
+
 
 
 

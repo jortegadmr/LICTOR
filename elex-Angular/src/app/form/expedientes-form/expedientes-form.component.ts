@@ -70,8 +70,6 @@ export class ExpedientesFormComponent implements OnInit {
     console.log(this.form.value);
   }
 
-
-
   create(){
     if (this.form !== null ) {
       if (this.form.valid){
