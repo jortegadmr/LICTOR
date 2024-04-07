@@ -1,8 +1,23 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink, RouterModule, RouterOutlet, Router } from '@angular/router';
+import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
+
 import { DocumentosService } from '../../services/documentos/documentos.service';
 import { Documentos } from '../../services/documentos/documentos-response';
+
+import { ActuacionesService } from '../../services/actuaciones/actuaciones.service';
+import { ActuacioneNombre, Actuaciones, ExpedienteNombre } from '../../services/actuaciones/actuaciones-response';
+import  {ActuacionesComponent} from "../../pages/actuaciones/actuaciones.component";
+
+import { ExpedientesService } from '../../services/expedientes/expedientes.service';  //Importar el Servicio de Expediente (TE)
+import { ExpedientesComponent } from '../../pages/expedientes/expedientes.component'; //Importar el Servicio adicional   (TE)
+import { Expedientes } from '../../services/expedientes/expedientes-response';  // Importar el Servicio Respuesta de Expediente (TE)
+import { Condicion } from '../../services/expedientes/expedientes-response';  // Importar el Servicio Respuesta de Condicion (TE)
+
+import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service'; //Importar el Servicio de tipo de expediente (TE)
+import { TipoExpedienteComponent } from "../../pages/tipo-expediente/tipo-expediente.component"; //Importar el Servicio adicional   (TE)
+import { Tipo } from '../../services/tipo-expediente/tipo-response'; // Importar el Servicio de tipo de expediente (TE)
 
 @Component({
   selector: 'app-documentos-form',
@@ -12,55 +27,90 @@ import { Documentos } from '../../services/documentos/documentos-response';
     RouterOutlet,
     RouterModule,
     ReactiveFormsModule,
+    AsyncPipe,
+    ExpedientesComponent,
+    TipoExpedienteComponent,
+    ActuacionesComponent
+    
   ],
   templateUrl: './documentos-form.component.html',
   styleUrl: './documentos-form.component.css'
 })
-export class DocumentosFormComponent {
+export class DocumentosFormComponent implements OnInit{
+  
   private fb = inject(FormBuilder);
   private docService = inject(DocumentosService); //inyeccion de dependencias, inicializa el servicio
   private router = inject(Router);
 
-  form = this.fb.group({
+  public expedientesService = inject(ExpedientesService); //Inyeccion de dependencias, inicializa el servicio (TE)
+  public tipoExpedienteService = inject(TipoExpedienteService); //Inyeccion de dependencias, inicializa el servicio de tipo de expediente (TE)
+  public actuacionesService = inject(ActuacionesService); //Inyeccion de dependencias, inicializa el servicio (TE)
 
+  expeDientes: Expedientes[] = []; // Guardamos los datos devueltos por el Servicio (TE)
+  tiposExp: Tipo[]=[]; // Guardamos los datos devueltos por el Servicio (TE)
+  actuAciones: ActuacioneNombre[]=[]; // Guardamos los datos devueltos por el Servicio (TE)
+
+  ngOnInit(): void {
+    // RECIBIMOS LOS EXPEDIENTES DEL SERVICIO
+    this.expedientesService.getExpedientes()
+    .subscribe( (expedientes: any) =>{
+      console.log(expedientes);
+      this.expeDientes=expedientes;
+    });
+    // RECIBIMOS LOS TIPOS DE EXPEDIENTES DEL SERVICIO
+    this.tipoExpedienteService.getTipoExpediente()
+    .subscribe( (tipos: any) =>{  
+      console.log(tipos);
+      this.tiposExp=tipos;
+    });
+    // RECIBIMOS LAS ACTUACIONES DEL SERVICIO
+    this.actuacionesService.getActuaciones()
+    .subscribe( (actuaciones: any) =>{
+      console.log(actuaciones);
+      this.actuAciones=actuaciones;
+    })
+  }
+
+  console(){
+    console.log(this.form.value);
+  }
+
+  form = this.fb.group({
+    // EL FORMULARIO formato
+
+    id: [null, [Validators.required]],
     nombre: ['', [Validators.required]],
     fecha: ['', [Validators.required]],
     descripcion: ['', [Validators.required]],
+    archivo: ['', [Validators.required]],
+    tipo: this.fb.group({
+        id: [null, [Validators.required]],
+        nombre: ['', [Validators.required]],
+        fecha: ['', [Validators.required]],
+        descripcion: ['', [Validators.required]],
+        estado: [false, [Validators.required]],
+        expediente: this.fb.group({
+            id: [null, [Validators.required]],
+            fecha: ['', [Validators.required]],
+            numero: ['', [Validators.required]],
+            materia: ['', [Validators.required]],
+            estado: [false, [Validators.required]],
+            responsable: ['', [Validators.required]],
+            responsable2: [null],
+            descripcion: ['', [Validators.required]],
+            condicion: ['', [Validators.required]],
+            precio: [null, [Validators.required]],
+            consejeria: ['', [Validators.required]],
+            expediente: this.fb.group({
+                id: [null, [Validators.required]],
+                nombre: ['', [Validators.required]],
+              }),
+            
+          })
+      })
   })
 
-  /* create() {
-    // Verificar si this.form no es nulo
-    if (this.form !== null) {
-      // Verificar si el formulario es válido antes de continuar
-      if (this.form.valid) {
-        // Obtener los valores del formulario y proporcionar valores predeterminados en caso de que sean undefined
-        const nombre = this.form.get('nombre')?.value ?? '';
-        const fecha = this.form.get('fecha')?.value ?? '';
-        const descripcion = this.form.get('descripcion')?.value ?? '';
   
-        // Crear un objeto con los datos del formulario
-        const documentosdato: Documentos = { 
-          id: 0, // Supongo que el ID se generará automáticamente en el backend
-        nombre: nombre,
-        descripcion: descripcion,
-        fecha: fecha,
-        archivo: null, // Asumiendo que el archivo aún no se ha subido
-        tipo: null // Asumiendo que el tipo aún no se ha establecido
-        };
-  
-        // Llamar al servicio para crear el tipo de expediente
-        this.docService.createDocumento(documentosdato)
-          .subscribe(() => {
-            // Manejar la respuesta o realizar acciones adicionales si es necesario
-            this.router.navigate(['tipo-expediente']);
-            location.reload(); // Recargar la página
-          });
-      } else {
-        console.error('El formulario no es válido');
-      }
-    } else {
-      console.error('El formulario es nulo');
-    }
-  } */
+ 
   
 }
