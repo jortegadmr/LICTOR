@@ -21,6 +21,7 @@
                     <th>Fecha </th>
                     <th>Estado</th>
                     <th>Descripcion</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -36,5 +37,15 @@
                             <td>Archivada</td>
                         }
                         <td>{{actuacion.descripcion}}</td>
+                        <td>
+                            <div>
+                                <a class="btn btn-light" routerLink={{actuacion.id}}>Editar</a>
+                                <a class="btn btn-danger" routerLink="#">Borrar</a>
+                            </div>
+                        </td>
                 }
             </tbody>
+        </table>
+    </div>
+
+</div>

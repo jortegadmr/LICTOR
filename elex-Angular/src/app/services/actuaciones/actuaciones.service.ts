@@ -26,7 +26,7 @@ export class ActuacionesService {
   }
 
   updateActuacion(id: number, actuacion:Actuaciones):Observable<Actuaciones>{
-    return this.http.put<Actuaciones>(this.actUrl + 'actualizar', actuacion);
+    return this.http.put<Actuaciones>(this.actUrl + id, actuacion);
   }
   
   deleteActuacion(id: number):Observable<Actuaciones>{

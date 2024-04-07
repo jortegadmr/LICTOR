@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 
 import { ActuacionesService } from '../../services/actuaciones/actuaciones.service';
@@ -18,7 +18,7 @@ import { Tipo } from '../../services/tipo-expediente/tipo-response'; // Importar
 @Component({
   selector: 'app-actuaciones-form',
   standalone: true,
-  imports: [  
+  imports: [
     RouterLink,
     RouterOutlet,
     RouterModule,
@@ -26,79 +26,125 @@ import { Tipo } from '../../services/tipo-expediente/tipo-response'; // Importar
     AsyncPipe,
     ExpedientesComponent,
     TipoExpedienteComponent,
-   
+
 
   ],
   templateUrl: './actuaciones-form.component.html',
   styleUrl: './actuaciones-form.component.css'
 })
 
-export class ActuacionesFormComponent implements OnInit{
+export class ActuacionesFormComponent implements OnInit {
 
   private fb = inject(FormBuilder);
   private actuacionesService = inject(ActuacionesService); //Inyeccion de dependencias, inicializa el servicio
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
 
   public expedientesService = inject(ExpedientesService); //Inyeccion de dependencias, inicializa el servicio (TE)
   public tipoExpedienteService = inject(TipoExpedienteService); //Inyeccion de dependencias, inicializa el servicio de tipo de expediente (TE)
 
   expeDientes: Expedientes[] = []; // Guardamos los datos devueltos por el Servicio (TE)
-  tiposExp: Tipo[]=[]; // Guardamos los datos devueltos por el Servicio (TE)
+  tiposExp: Tipo[] = []; // Guardamos los datos devueltos por el Servicio (TE)
 
-  
+  //PARA EL UPDATE
+  form?: FormGroup;
+  actuacionesExiste?: Actuaciones;
+
+
   ngOnInit(): void {
-    // RECIBIMOS LOS EXPEDIENTES DEL SERVICIO
-    this.expedientesService.getExpedientes()
-    .subscribe( (expedientes: any) =>{
-      console.log(expedientes);
-      this.expeDientes=expedientes;
-    });
-    // RECIBIMOS LOS TIPOS DE EXPEDIENTES DEL SERVICIO
-    this.tipoExpedienteService.getTipoExpediente()
-    .subscribe( (tipos: any) =>{  
-      console.log(tipos);
-      this.tiposExp=tipos;
-    });
-  }
 
-  console(){
-    console.log(this.form.value);
-  }
+    const actuacionesId = this.route.snapshot.paramMap.get('id');
 
-  form = this.fb.group({
-    // EL FORMULARIO
+    if (actuacionesId) {
 
-    id: [null, [Validators.required]], // Puede ser nulo o un número
-    nombre: ['', [Validators.required]], // Cadena de texto
-    fecha: ['', [Validators.required]], // tipo fecha
-    descripcion: ['', [Validators.required]],
-    estado: [false, [Validators.required]], // Booleano
-    expediente: this.fb.group({
-      id: [null, [Validators.required]], // Puede ser nulo o un número
-      fecha: ['', [Validators.required]], // tipo fecha
-      numero: ['', [Validators.required]],
-      materia: ['', [Validators.required]],
-      estado: [false, [Validators.required]], // Booleano
-      responsable: ['', [Validators.required]],
-      responsable2: [null],
-      descripcion: ['', [Validators.required]],
-      condicion: ['', [Validators.required]],
-      precio: [0, [Validators.required]], // Numero
-      consejeria: ['', [Validators.required]],
-      expediente: this.fb.group({
+      this.actuacionesService.getActuacion(parseInt(actuacionesId))
+        .subscribe((actuaciones: any) => {
+
+          this.actuacionesExiste = actuaciones
+
+          // EL FORMULARIO
+          this.form = this.fb.group({
+
+
+            id: [null, [Validators.required]], // Puede ser nulo o un número
+            nombre: ['', [Validators.required]], // Cadena de texto
+            fecha: ['', [Validators.required]], // tipo fecha
+            descripcion: ['', [Validators.required]],
+            estado: [false, [Validators.required]], // Booleano
+            expediente: this.fb.group({
+              id: [null, [Validators.required]], // Puede ser nulo o un número
+              fecha: ['', [Validators.required]], // tipo fecha
+              numero: ['', [Validators.required]],
+              materia: ['', [Validators.required]],
+              estado: [false, [Validators.required]], // Booleano
+              responsable: ['', [Validators.required]],
+              responsable2: [null],
+              descripcion: ['', [Validators.required]],
+              condicion: ['', [Validators.required]],
+              precio: [0, [Validators.required]], // Numero
+              consejeria: ['', [Validators.required]],
+              expediente: this.fb.group({
+                id: [null, [Validators.required]], // Puede ser nulo o un número
+                nombre: ['', [Validators.required]] // Cadena de texto
+              }),
+            })
+
+          })
+        })
+
+      // RECIBIMOS LOS EXPEDIENTES DEL SERVICIO
+      this.expedientesService.getExpedientes()
+        .subscribe((expedientes: any) => {
+          console.log(expedientes);
+          this.expeDientes = expedientes;
+        });
+      // RECIBIMOS LOS TIPOS DE EXPEDIENTES DEL SERVICIO
+      this.tipoExpedienteService.getTipoExpediente()
+        .subscribe((tipos: any) => {
+          console.log(tipos);
+          this.tiposExp = tipos;
+        });
+    } else {
+
+      this.form = this.fb.group({
         id: [null, [Validators.required]], // Puede ser nulo o un número
-        nombre: ['', [Validators.required]] // Cadena de texto
-        }),
-    })
-  })
+        nombre: ['', [Validators.required]], // Cadena de texto
+        fecha: ['', [Validators.required]], // tipo fecha
+        descripcion: ['', [Validators.required]],
+        estado: [false, [Validators.required]], // Booleano
+        expediente: this.fb.group({
+          id: [null, [Validators.required]], // Puede ser nulo o un número
+          fecha: ['', [Validators.required]], // tipo fecha
+          numero: ['', [Validators.required]],
+          materia: ['', [Validators.required]],
+          estado: [false, [Validators.required]], // Booleano
+          responsable: ['', [Validators.required]],
+          responsable2: [null],
+          descripcion: ['', [Validators.required]],
+          condicion: ['', [Validators.required]],
+          precio: [0, [Validators.required]], // Numero
+          consejeria: ['', [Validators.required]],
+          expediente: this.fb.group({
+            id: [null, [Validators.required]], // Puede ser nulo o un número
+            nombre: ['', [Validators.required]] // Cadena de texto
+          }),
+        })
+      })
+    }
+  }
+  console() {
+    console.log(this.form!.value);
+  }
 
-  create(){
-    if (this.form !== null ) {
-      if (this.form){
+
+
+  create() {
+    if (this.form !== null) {
+      if (this.form) {
 
         // Declaración de la variable condicion
         let nombreConst: ActuacioneNombre = ActuacioneNombre.CitacionYEmplazamiento; // ENUM del RESPONSE tienen que coincidir los nombres
-        let condicionConst: Condicion= Condicion.Confidencial; // ENUM del RESPONSE tienen que coincidir los nombres
+        let condicionConst: Condicion = Condicion.Confidencial; // ENUM del RESPONSE tienen que coincidir los nombres
         let constNombre: ExpedienteNombre = ExpedienteNombre.Asi; // ENUM del RESPONSE tienen que coincidir los nombres
 
         const nombreEnum: string | null | undefined = this.form.get('nombre')?.value;   // Asignar el valor del enum Condicion
@@ -125,45 +171,45 @@ export class ActuacionesFormComponent implements OnInit{
           default:
         }
 
-         // Mapear la cadena de texto del formulario al valor del enum Condicion IF
-         if (condicionEnum !== null && condicionEnum !== undefined) {
+        // Mapear la cadena de texto del formulario al valor del enum Condicion IF
+        if (condicionEnum !== null && condicionEnum !== undefined) {
           switch (condicionEnum) {
-              case 'confidencial':
-                  condicionConst = Condicion.Confidencial;
-                  break;
-              case 'en seguimiento':
-                  condicionConst = Condicion.EnSeguimiento;
-                  break;
-              case 'urgente':
-                  condicionConst = Condicion.Urgente;
-                  break;
-              default:
-                  // Manejar el caso en que el valor del formulario no coincide con ningún valor del enum
-                  break;
-            }
+            case 'confidencial':
+              condicionConst = Condicion.Confidencial;
+              break;
+            case 'en seguimiento':
+              condicionConst = Condicion.EnSeguimiento;
+              break;
+            case 'urgente':
+              condicionConst = Condicion.Urgente;
+              break;
+            default:
+              // Manejar el caso en que el valor del formulario no coincide con ningún valor del enum
+              break;
           }
+        }
 
-          // Mapear la cadena de texto del formulario al valor del enum Condicion IF
+        // Mapear la cadena de texto del formulario al valor del enum Condicion IF
 
-          if (constEnum !== null && constEnum !== undefined) {
-            switch (constEnum) {
-                case 'ASI':
-                    constNombre = ExpedienteNombre.Asi;
-                    break;
-                case 'INF':
-                    constNombre = ExpedienteNombre.Inf;
-                    break;
-                case 'JUD':
-                    constNombre = ExpedienteNombre.Jud;
-                    break;
-                case 'MO':
-                    constNombre = ExpedienteNombre.Mo;
-                    break;
-                default:
-                    // Manejar el caso en que el valor del formulario no coincide con ningún valor del enum
-                    break;
-              }
-            }
+        if (constEnum !== null && constEnum !== undefined) {
+          switch (constEnum) {
+            case 'ASI':
+              constNombre = ExpedienteNombre.Asi;
+              break;
+            case 'INF':
+              constNombre = ExpedienteNombre.Inf;
+              break;
+            case 'JUD':
+              constNombre = ExpedienteNombre.Jud;
+              break;
+            case 'MO':
+              constNombre = ExpedienteNombre.Mo;
+              break;
+            default:
+              // Manejar el caso en que el valor del formulario no coincide con ningún valor del enum
+              break;
+          }
+        }
 
 
         const actuacionDato: Actuaciones = {
@@ -187,23 +233,37 @@ export class ActuacionesFormComponent implements OnInit{
             expediente: {
               id: this.form.get('expediente.expediente.id')?.value ?? 0,
               nombre: constNombre //  otro ENUM
-              }
+            }
           }
-        } 
+        }
 
-        this.actuacionesService.createActuacion(actuacionDato)
-        .subscribe(() => {
-          this.router.navigate(['actuaciones']);
-          console.log("Se ha creado correctamente la Actuacion");
-          alert("Se ha creado correctamente la Actuacion");
-            location.reload();
-        })
+        if (this.actuacionesExiste) {
+
+          this.actuacionesService.updateActuacion(this.actuacionesExiste.id, actuacionDato)
+            .subscribe(() => {
+
+              console.log("Se ha creado correctamente la Actuacion");
+              alert("Se ha creado correctamente la Actuacion");
+              this.router.navigate(['/actuaciones']).then(() => {
+                window.location.reload();
+              })
+            })
+
+        } else {
+          this.actuacionesService.createActuacion(actuacionDato)
+            .subscribe(() => {
+
+              console.log("Se ha creado correctamente la Actuacion");
+              alert("Se ha creado correctamente la Actuacion");
+              this.router.navigate(['/actuaciones']).then(() => {
+                window.location.reload();
+              })
+            })
+
+        }
       }
-      else {console.error('El formulario no es válido');}
-    } 
-    else {console.error('El formulario es nulo');}
-
-  
-
+      else { console.error('El formulario no es válido'); }
+    }
+    else { console.error('El formulario es nulo'); }
   }
 }

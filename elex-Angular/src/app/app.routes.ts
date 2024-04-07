@@ -41,7 +41,7 @@ export const routes: Routes = [
                 component: ActuacionesFormComponent,
             },
             {
-                path: ':id/editar', 
+                path: ':id', 
                 component: ActuacionesFormComponent,
             }
         ]

@@ -165,10 +165,13 @@ export class ExpedientesFormComponent implements OnInit {
             console.log(expedientedato);
           this.expedientesService.createExpediente(expedientedato) // Pasamos los datos al Servicio
           .subscribe(()=>{
-            this.router.navigate(['expedientes']);
+           
             console.log("Se ha creado correctamente el expediente");
             alert("Se ha creado correctamente el expediente");
-            location.reload();
+           
+            this.router.navigate(['expedientes']).then(() => {
+              window.location.reload();
+            })
           })
           }
           
