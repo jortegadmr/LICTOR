@@ -16,4 +16,20 @@ export class ActuacionesService {
   getActuaciones(): Observable<Actuaciones>{
     return this.http.get<Actuaciones>(this.actUrl + 'listado');
   }
+
+  getActuacion(id: number): Observable<Actuaciones>{
+    return this.http.get<Actuaciones>(this.actUrl + 'consultar/' + id);
+  }
+
+  createActuacion(actuacion: Actuaciones): Observable<Actuaciones> {
+    return this.http.post<Actuaciones>(this.actUrl + 'nueva', actuacion);
+  }
+
+  updateActuacion(id: number, actuacion:Actuaciones):Observable<Actuaciones>{
+    return this.http.put<Actuaciones>(this.actUrl + 'actualizar', actuacion);
+  }
+  
+  deleteActuacion(id: number):Observable<Actuaciones>{
+    return this.http.delete<Actuaciones>(this.actUrl + 'eliminar/' + id);
+  }
 }
