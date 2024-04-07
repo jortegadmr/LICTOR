@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink, RouterModule, RouterOutlet, Router } from '@angular/router';
+import { RouterLink, RouterModule, RouterOutlet, Router, ActivatedRoute } from '@angular/router';
 import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service';
 import { Tipo } from '../../services/tipo-expediente/tipo-response';
 
@@ -17,11 +17,23 @@ import { Tipo } from '../../services/tipo-expediente/tipo-response';
   templateUrl: './tipo-form.component.html',
   styleUrl: './tipo-form.component.css'
 })
-export class TipoFormComponent {
+export class TipoFormComponent implements OnInit {
+  ngOnInit(): void {
+    const id =this.route.snapshot.paramMap.get('id');
+
+    if (id){
+      this.tipoExpedienteService.getTipoExpediente(parseInt(id))
+      .subscribe( (tipos: any) =>{
+        
+      })
+    }
+    
+  }
 
   private fb = inject(FormBuilder);
   private tipoExpedienteService = inject(TipoExpedienteService); //inyeccion de dependencias, inicializa el servicio
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
 
   form = this.fb.group({
     

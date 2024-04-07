@@ -27,6 +27,10 @@ export const routes: Routes = [
                 path: 'tipo-form', 
                 component: TipoFormComponent, 
             },
+            { 
+                path: ':id/:nombre', 
+                component: TipoFormComponent, 
+            },
         ]
      },
     
