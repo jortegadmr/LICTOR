@@ -1,1 +1,60 @@
-<p>actuaciones-form works!</p>
+<div class="container py-5 h-100">
+    <h2>Nuevo Expediente</h2>
+
+    <form [formGroup]="form" (ngSubmit)="console()" class="mt-4">
+        
+            <div class="mb-3 d-flex align-items-end">
+                 <!-- Aqui un desplegable de los Expedientes -->
+                
+                 <select id="expediente" name="expediente" formControlName="expediente" class="form-select me-2">
+                    <option [ngValue]="null" disabled selected>Seleccionar Expediente</option>
+                    
+                        @for (tipo of expeDientes; track tipo.id) {
+                            <option [ngValue]="{ id: tipo.id, nombre: tipo.numero }">
+                                {{ tipo.numero }}
+                            </option>
+                }
+                </select>
+                <!-- Actuacion Nombre Desplegable -->
+                <select id="actuacionNombre" name="actuacionNombre" formControlName="actuacionNombre" class="form-select me-2">
+                    <option [ngValue]="null" disabled selected>Nombre</option>
+                    
+                        <option>
+                            Citacion y emplazamiento
+                        </option>
+                        <option>
+                            Declaraciones
+                        </option>
+                        <option>
+                            Informes
+                        </option>
+                        <option>
+                            Notificaciones
+                        </option>
+                        <option>
+                            Resoluciones judiciales
+                        </option>
+                </select>
+
+                <select id="expediente" name="expediente" formControlName="expediente" class="form-select me-2">
+                    <option [ngValue]="null" disabled selected>Seleccionar Tipo de Expediente</option>
+                    
+                        @for (tipo of tiposExp; track tipo.id) {
+                            <option [ngValue]="{ id: tipo.id, nombre: tipo.nombre }">
+                                {{ tipo.nombre }}
+                            </option>
+                }
+                </select>
+
+                <input type="date" id="fecha" name="fecha" formControlName="fecha" class="form-control me-2">
+                 <!-- Aqui un booleano  para estado -->
+                 <div class="form-check">
+                    <input type="checkbox" id="estado" name="estado" formControlName="estado" class="form-check-input">
+                    <label for="estado" class="form-check-label">Estado vivo</label>
+                </div>
+                <input type="text-area" id="descripcion" name="descripcion" placeholder="Descripcion" formControlName="descripcion" class="form-control me-2">
+
+            </div>
+    </form>
+</div>
+               
