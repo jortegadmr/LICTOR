@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 
 import { DocumentosService } from '../../services/documentos/documentos.service';
@@ -41,6 +41,7 @@ export class DocumentosFormComponent implements OnInit{
   private fb = inject(FormBuilder);
   private docService = inject(DocumentosService); //inyeccion de dependencias, inicializa el servicio
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
 
   public expedientesService = inject(ExpedientesService); //Inyeccion de dependencias, inicializa el servicio (TE)
   public tipoExpedienteService = inject(TipoExpedienteService); //Inyeccion de dependencias, inicializa el servicio de tipo de expediente (TE)
@@ -123,28 +124,28 @@ export class DocumentosFormComponent implements OnInit{
           archivo:null, // Esta nulo hasta que podamos subir el archivo
           // Tipo (formato)
           tipo: { 
-              id: this.form.get('actuaciones.id')?.value ?? 0,
-              nombre: this.form.get('actuaciones.nombre')?.value ?? '',
-              fecha: this.form.get('actuaciones.fecha')?.value ?? '',
-              descripcion: this.form.get('actuaciones.descripcion')?.value ?? '',
-              estado: this.form.get('actuaciones.estado')?.value ?? false,
+              id: this.form.get('tipo.id')?.value ?? 0,
+              nombre: this.form.get('tipo.nombre')?.value ?? '',
+              fecha: this.form.get('tipo.fecha')?.value ?? '',
+              descripcion: this.form.get('tipo.descripcion')?.value ?? '',
+              estado: this.form.get('tipo.estado')?.value ?? false,
               // TipoExpediente (formato)
               expediente: {   
-                  id: this.form.get('actuaciones.expediente.id')?.value ?? 0,
-                  fecha: this.form.get('actuaciones.expediente.fecha')?.value ?? '',
-                  numero: this.form.get('actuaciones.expediente.numero')?.value ?? '',
-                  materia: this.form.get('actuaciones.expediente.materia')?.value ?? '',
-                  estado: this.form.get('actuaciones.expediente.estado')?.value ?? false,
-                  responsable: this.form.get('actuaciones.expediente.responsable')?.value ?? '',
-                  responsable2: this.form.get('actuaciones.expediente.responsable2')?.value ?? '',
-                  descripcion: this.form.get('actuaciones.expediente.descripcion')?.value ?? '',
-                  condicion: this.form.get('actuaciones.expediente.condicion')?.value ?? '',
-                  precio: this.form.get('actuaciones.expediente.precio')?.value ?? 0,
-                  consejeria: this.form.get('actuaciones.expediente.consejeria')?.value ?? '',
+                  id: this.form.get('tipo.expediente.id')?.value ?? 0,
+                  fecha: this.form.get('tipo.expediente.fecha')?.value ?? '',
+                  numero: this.form.get('tipo.expediente.numero')?.value ?? '',
+                  materia: this.form.get('tipo.expediente.materia')?.value ?? '',
+                  estado: this.form.get('tipo.expediente.estado')?.value ?? false,
+                  responsable: this.form.get('tipo.expediente.responsable')?.value ?? '',
+                  responsable2: this.form.get('tipo.expediente.responsable2')?.value ?? '',
+                  descripcion: this.form.get('tipo.expediente.descripcion')?.value ?? '',
+                  condicion: this.form.get('tipo.expediente.condicion')?.value ?? '',
+                  precio: this.form.get('tipo.expediente.precio')?.value ?? 0,
+                  consejeria: this.form.get('tipo.expediente.consejeria')?.value ?? '',
                   // ExpedienteExpediente (formato)
                   expediente: { 
-                      id: this.form.get('actuaciones.expediente.expediente.id')?.value ?? 0,
-                      nombre: this.form.get('actuaciones.expediente.expediente.nombre')?.value ?? '',
+                      id: this.form.get('tipo.expediente.expediente.id')?.value ?? 0,
+                      nombre: this.form.get('tipo.expediente.expediente.nombre')?.value ?? '',
                     }
                 }
             }
