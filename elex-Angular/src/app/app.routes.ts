@@ -52,6 +52,10 @@ export const routes: Routes = [
             { 
                 path: 'documentos-form', 
                 component: DocumentosFormComponent, 
+            },
+            {
+                path: ':id', 
+                component: DocumentosFormComponent,
             }
         ]
      },
