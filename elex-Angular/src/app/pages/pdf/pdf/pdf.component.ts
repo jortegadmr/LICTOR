@@ -25,21 +25,29 @@ export class PdfComponent  {
     public documentService = inject (DocumentosService);
     private route = inject(ActivatedRoute);
 
-    docuMent: Documentos[]=[]; // Guardamos los datos devueltos por el Servicio
-
     docuMentExiste?: Documentos;
+
+    docuMent: Documentos[]=[]; // Guardamos los datos devueltos por el Servicio
+    docuUrl: string = '';
+
+
 
     ngOnInit(): void {  // Se ejecuta al inciar el componente, guardamos los datos en la variable "document"
         
         const documentoId = this.route.snapshot.paramMap.get('id');
 
-        if (documentoId) {
+        this.documentService.getDocumentos()
+        .subscribe((documentos: any) => {
+            this.docuMent = documentos;
+        });
+        if (documentoId){
             this.documentService.getDocumento(parseInt(documentoId))
-            .subscribe((documentos: Documentos) => {
-                this.docuMentExiste = documentos
-            });
+            .subscribe((documentos: any) => {
+                this.docuMentExiste = documentos;
 
-            const nombrePDF = this.docuMentExiste?.archivo;
+                this.docuUrl = `../../../../assets/${this.docuMentExiste?.nombre}.pdf`;
+                console.log(this.docuUrl);
+            });
         }
       }
 
