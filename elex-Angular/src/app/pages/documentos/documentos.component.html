@@ -13,6 +13,7 @@
                     <th>Nombre</th>
                     <th>Fecha</th>
                     <th>Descripcion</th>
+                    <th></th>
 
                 </tr>
             </thead>
@@ -22,6 +23,10 @@
                         <td>{{documento.nombre}}</td>
                         <td>{{documento.fecha}}</td>
                         <td>{{documento.descripcion}}</td>
+                        <td>
+                            <button class="btn btn-primary" routerLink="documentos-form/{{documento.id}}">Editar</button>
+                            <button class="btn btn-danger">Eliminar</button>
+                        </td>
                     </tr>
                 }
             </tbody>
