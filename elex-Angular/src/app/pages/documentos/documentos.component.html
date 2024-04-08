@@ -28,7 +28,7 @@
                         <td>{{documento.archivo}}</td>
                         <td>
                             <button class="btn btn-light" (click)="generatePDF(documento)" >Generar PDF</button>
-                            <button class="btn btn-light" routerLink="/pdf" >Ver</button>
+                            <button class="btn btn-light" routerLink="/{{documento.id}}/pdf" >Ver</button>
                         </td>
                         <td>
                             <button class="btn btn-primary" routerLink="{{documento.id}}">Editar</button>

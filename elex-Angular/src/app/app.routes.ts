@@ -75,6 +75,6 @@ export const routes: Routes = [
         ]
     },
 
-    { path: 'pdf', component: PdfComponent, canActivate: [authGuard] },
+    { path: ':id/pdf', component: PdfComponent, canActivate: [authGuard] },
 
 ];
