@@ -102,6 +102,7 @@ export class DocumentosComponent {
     
     // GUARDAR PC
     doc.save(documento.nombre+'.pdf');
+    alert('PDF generado correctamente!');
     
 
     // Guarda el PDF en formato binario
