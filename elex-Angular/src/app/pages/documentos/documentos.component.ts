@@ -10,18 +10,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
+
 @Component({
-  selector: 'app-documentos',
-  standalone: true,
-  imports: [
-    RouterLink,
-    RouterOutlet,
-    AsyncPipe,
-    DocumentosComponent,
-    PdfViewerModule,
-  ],
-  templateUrl: './documentos.component.html',
-  styleUrl: './documentos.component.css'
+    selector: 'app-documentos',
+    standalone: true,
+    templateUrl: './documentos.component.html',
+    styleUrl: './documentos.component.css',
+    imports: [
+        RouterLink,
+        RouterOutlet,
+        AsyncPipe,
+        DocumentosComponent,
+        PdfViewerModule,
+        
+    ]
 })
 export class DocumentosComponent {
 

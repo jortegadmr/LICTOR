@@ -5,6 +5,7 @@ import { Tipo } from '../../services/tipo-expediente/tipo-response';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
+
 @Component({
     selector: 'app-dashboard',
     standalone: true,
@@ -14,7 +15,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
         RouterLink,
         RouterOutlet,
         AsyncPipe,
-        TipoExpedienteComponent
+        TipoExpedienteComponent,
+        
     ]
 })
 export class DashboardComponent {}
