@@ -27,7 +27,7 @@ export class TipoExpedienteService {
   }
   
   deleteTipoExpediente(id: number):Observable<Tipo>{
-    return this.http.delete<Tipo>(this.tipoUrl + 'eliminar/' + id);
+    return this.http.delete<Tipo>(this.tipoUrl + 'borrar/' + id);
   }
 }
 

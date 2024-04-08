@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service';
 import { Tipo } from '../../services/tipo-expediente/tipo-response';
 import { AsyncPipe } from '@angular/common';
@@ -22,6 +22,7 @@ import { AsyncPipe } from '@angular/common';
 
 export class TipoExpedienteComponent implements OnInit {
   public tipoExpedienteService = inject (TipoExpedienteService); // Inyectamos el Servicio donde están las llamadas al servidor
+  private router = inject (Router);
 
   tipos: Tipo[]=[]; // Guardamos los datos devueltos por el Servicio
   
@@ -34,4 +35,16 @@ export class TipoExpedienteComponent implements OnInit {
     });
 
   }
+
+  deleteTipo( tipo:Tipo) {
+    this.tipoExpedienteService.deleteTipoExpediente(tipo.id)
+    .subscribe( () => {
+      console.log('Ok, Eliminado');
+      alert('Se ha eliminado el tipo correctamente');
+      this.router.navigate(['/tipo-expediente']).then(() => 
+        window.location.reload());
+
+    })
+  }
+
 }
