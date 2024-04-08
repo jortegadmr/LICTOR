@@ -7,6 +7,8 @@ import { Documentos } from '../../services/documentos/documentos-response';
 import {jsPDF} from 'jspdf';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
 @Component({
   selector: 'app-documentos',
   standalone: true,
@@ -14,7 +16,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
     RouterLink,
     RouterOutlet,
     AsyncPipe,
-    DocumentosComponent
+    DocumentosComponent,
+    PdfViewerModule
   ],
   templateUrl: './documentos.component.html',
   styleUrl: './documentos.component.css'
@@ -68,7 +71,10 @@ export class DocumentosComponent {
     doc.text('Tipo Expediente: ' + documento.tipo.expediente.expediente.nombre, 30, 260);
     doc.text('Precio: ' + documento.tipo.expediente.precio + '€', 30, 240);
 
-    doc.save(documento.nombre+'.pdf');
+    const nombreArchivo = documento.nombre+'.pdf';
+    doc.save(nombreArchivo);
+
+
 
   }
 

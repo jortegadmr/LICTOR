@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { NavComponent } from './shared/nav/nav.component';
 import { NgFor, NgIf, NgForOf } from '@angular/common';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 @Component({
@@ -27,6 +28,7 @@ import { NgFor, NgIf, NgForOf } from '@angular/common';
     NgFor,
     NgIf,
     NgForOf,
+    PdfViewerModule
  
   ],
   templateUrl: './app.component.html',

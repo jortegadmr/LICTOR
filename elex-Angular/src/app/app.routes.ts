@@ -11,6 +11,7 @@ import { TipoFormComponent } from './form/tipo-form/tipo-form.component';
 import { DocumentosFormComponent } from './form/documentos-form/documentos-form.component';
 import { ActuacionesFormComponent } from './form/actuaciones-form/actuaciones-form.component';
 import { ExpedientesFormComponent } from './form/expedientes-form/expedientes-form.component';
+import { PdfComponent } from './pages/pdf/pdf/pdf.component';
 
 export const routes: Routes = [
     /* ---Definimos las Rutas--- */
@@ -56,7 +57,8 @@ export const routes: Routes = [
             {
                 path: ':id', 
                 component: DocumentosFormComponent,
-            }
+            },
+            
         ]
      },
 
@@ -72,5 +74,7 @@ export const routes: Routes = [
             }
         ]
     },
+
+    { path: 'pdf', component: PdfComponent, canActivate: [authGuard] },
 
 ];
