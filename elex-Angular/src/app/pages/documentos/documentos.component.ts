@@ -44,15 +44,16 @@ export class DocumentosComponent {
   generatePDF(documento:Documentos) {
     const doc = new jsPDF();
     
+// Tendria que ir una imagen o un logo
+// ----
 doc.text('Titulo del Documento: ' + documento.nombre, 20, 70);
 doc.text('Fecha del Documento: ' + documento.fecha, 20, 80);
 doc.text('Descripción del Documento: ' + documento.descripcion, 20, 90);
-
-// Tipo - (ACTUACION)
+// ----
 doc.text('Actuación Relacionada: ' + documento.tipo.nombre, 20, 110);
 doc.text('Expediente de la Actuación: ' + documento.tipo.expediente.numero, 20, 120);
 doc.text('Estado de la Actuación: ' + (documento.tipo.estado ? 'Activo' : 'Inactivo'), 20, 130);
-
+// ----
 doc.text('Datos del expediente:', 20, 150,);
 doc.text('Fecha: ' + documento.tipo.expediente.fecha, 30, 170);
 doc.text('Materia: ' + documento.tipo.expediente.materia, 30, 180);
