@@ -50,8 +50,9 @@ export class TipoFormComponent implements OnInit {
         this.tipoExpedienteService.createTipoExpediente(tipodato)
           .subscribe(() => {
             // Manejar la respuesta o realizar acciones adicionales si es necesario
-            this.router.navigate(['tipo-expediente']);
-            location.reload(); // Recargar la página
+            alert('Tipo de expediente creado con exito');
+            this.router.navigate(['tipo-expediente']).then(() => window.location.reload());
+            
           });
       } else {
         console.error('El formulario no es válido');

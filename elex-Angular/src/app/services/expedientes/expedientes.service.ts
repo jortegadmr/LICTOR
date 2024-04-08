@@ -29,6 +29,6 @@ export class ExpedientesService {
   }
 
   deleteExpediente(id: number):Observable<Expedientes>{
-    return this.http.delete<Expedientes>(this.expUrl + 'eliminar/' + id);
+    return this.http.delete<Expedientes>(this.expUrl + 'borrar/' + id);
   }
 }

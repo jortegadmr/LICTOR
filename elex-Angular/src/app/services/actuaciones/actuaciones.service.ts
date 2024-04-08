@@ -30,6 +30,6 @@ export class ActuacionesService {
   }
   
   deleteActuacion(id: number):Observable<Actuaciones>{
-    return this.http.delete<Actuaciones>(this.actUrl + 'eliminar/' + id);
+    return this.http.delete<Actuaciones>(this.actUrl + id);
   }
 }
