@@ -56,9 +56,11 @@ export class TipoFormComponent implements OnInit {
           });
       } else {
         console.error('El formulario no es válido');
+        alert('Rellene el formulario');
       }
     } else {
       console.error('El formulario es nulo');
+      alert('Rellene el formulario correctamente');
     }
   }
   
