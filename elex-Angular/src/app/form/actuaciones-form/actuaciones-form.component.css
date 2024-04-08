@@ -41,3 +41,7 @@
 .btn-primary:hover {
     background-color: #166488;
 }
+.btn-custom {
+    width: 100px; /* Ajusta el ancho de los botones según sea necesario */
+    height: 40px; /* Ajusta la altura de los botones según sea necesario */
+}

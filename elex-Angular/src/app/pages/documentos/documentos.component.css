@@ -52,3 +52,7 @@
     align-items: center; /* Centra verticalmente (opcional) */
     margin-top: 30px; /* Ajusta la altura del contenedor */
 }
+.btn-custom {
+    width: 100px; /* Ajusta el ancho de los botones según sea necesario */
+    height: 40px; /* Ajusta la altura de los botones según sea necesario */
+}
