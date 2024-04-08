@@ -171,7 +171,7 @@ export class DocumentosFormComponent implements OnInit {
           nombre: this.form.get('nombre')?.value ?? '',
           fecha: this.form.get('fecha')?.value ?? '',
           descripcion: this.form.get('descripcion')?.value ?? '',
-          archivo: new Blob,//que ponemos aqui?          
+          archivo: this.form.get('archivo')?.value ?? '',//que ponemos aqui?          
           // Tipo (formato)
           tipo: {
             id: this.form.get('tipo.id')?.value ?? 0,

@@ -105,18 +105,6 @@ export class DocumentosComponent {
     alert('PDF generado correctamente!');
     
 
-    // Guarda el PDF en formato binario
-    const pdfBinary = doc.output('arraybuffer');
-
-     // Convierte el ArrayBuffer en Blob
-     const pdfBlob = new Blob([pdfBinary], { type: 'application/pdf' });
-
-     // Crea un nuevo objeto de tipo File a partir del Blob
-     const pdfFile = new File([pdfBlob], documento.nombre + '.pdf');
- 
-     // Asigna el archivo al campo archivo de documento
-     documento.archivo = pdfFile;
-
     
   }
 
