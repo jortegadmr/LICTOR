@@ -29,4 +29,13 @@ export class ActuacionesComponent {
     });
   }
 
+  deleteActuacion(actuacion: Actuaciones) {
+    this.actuacionesService.deleteActuacion(actuacion.id)
+    .subscribe( () => {
+      console.log('Ok, Eliminado');
+      alert('Se ha eliminado la actuación correctamente');
+      window.location.reload();
+    })
+  }
+
   }

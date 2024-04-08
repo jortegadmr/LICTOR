@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { DocumentosService } from '../../services/documentos/documentos.service';
 import { Documentos } from '../../services/documentos/documentos-response';
@@ -19,6 +19,7 @@ import { Documentos } from '../../services/documentos/documentos-response';
 export class DocumentosComponent {
 
   public documentService = inject (DocumentosService); // Inyectamos el Servicio donde están las llamadas al servidor
+  private router = inject (Router);
 
   document: Documentos[]=[]; // Guardamos los datos devueltos por el Servicio
 
@@ -26,5 +27,15 @@ export class DocumentosComponent {
     this.documentService.getDocumentos().subscribe((data: any) => {
       this.document = data;
     });
+  }
+
+  deleteDocumento( documento:Documentos) {
+    this.documentService.deleteDocumento(documento.id)
+    .subscribe( () => {
+      console.log('Ok, Eliminado');
+      alert('Se ha eliminado el Documento correctamente');
+      this.router.navigate(['/documentos']).then(() => 
+        window.location.reload());
+    })
   }
 }

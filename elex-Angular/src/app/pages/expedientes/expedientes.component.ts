@@ -29,4 +29,16 @@ export class ExpedientesComponent implements OnInit {
       this.expedientes=expedientes;
     })
   }
+
+  deleteExpediente( expediente:Expedientes) {
+    this.expedientesService.deleteExpediente(expediente.id)
+    .subscribe( () => {
+      console.log('Ok, Eliminado');
+      alert('Se ha eliminado el expediente correctamente');
+      this.expedientesService.getExpedientes().subscribe( (expedientes: any) =>{
+        console.log(expedientes);
+        this.expedientes=expedientes;
+      })
+    })
+  }
 }
