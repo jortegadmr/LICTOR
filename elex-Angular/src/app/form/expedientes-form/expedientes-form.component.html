@@ -13,9 +13,9 @@
     @if (form) {
         <form [formGroup]="form" (ngSubmit)="create()" class="mt-4">
         
-            <div class="mb-3 d-flex align-items-end">
+            <div class="mb-3 d-flex ">
 
-                <div class="me-2">
+                
                         <!-- Aqui un desplegable de los tipos Expedientes -->
                                         
                         <select id="expediente" name="expediente" formControlName="expediente" class="form-select me-2">
@@ -27,7 +27,7 @@
                                     </option>
                         }
                         </select>
-                </div>
+                
                 
 
                 <input type="date" id="fecha" name="fecha" formControlName="fecha" class="form-control me-2">
