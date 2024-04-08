@@ -17,8 +17,7 @@ public class DocumentosModel {
 
     private LocalDate fecha;
 
-    @Lob
-    private byte[] archivo;
+	private String archivo;
 
     @ManyToOne
     @JoinColumn(name = "tipo")
@@ -56,11 +55,11 @@ public class DocumentosModel {
 		this.fecha = fecha;
 	}
 
-	public byte[] getArchivo() {
+	public String getArchivo() {
 		return archivo;
 	}
-
-	public void setArchivo(byte[] archivo) {
+	
+	public void setArchivo(String archivo) {
 		this.archivo = archivo;
 	}
 
