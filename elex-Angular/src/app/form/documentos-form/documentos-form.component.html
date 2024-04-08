@@ -9,7 +9,7 @@
     </h2>
 
     @if (form) {
-        <form [formGroup]="form" (ngSubmit)="create()" class="mt-4">
+        <form [formGroup]="form" (ngSubmit)="console()" class="mt-4">
         
             <div class="mb-3 d-flex align-items-end">
                 
@@ -30,6 +30,8 @@
                         }
                 
                 </select>
+
+                <input type="file" name="archivo" placeholder="Archivo" formControlName="archivo" class="form-control me-2">
     
                 <button type="button" class="btn btn-light ms-2" routerLink="/documentos">Cancelar</button>
                 <button type="submit" class="btn btn-primary">

@@ -166,13 +166,12 @@ export class DocumentosFormComponent implements OnInit {
     if (this.form !== null) {
       if (this.form) {
 
-
         const documentoDato = { // Documentos (formato)
           id: 0,
           nombre: this.form.get('nombre')?.value ?? '',
           fecha: this.form.get('fecha')?.value ?? '',
           descripcion: this.form.get('descripcion')?.value ?? '',
-          archivo: this.form.get('archivo')?.value ?? '',
+          archivo: new Blob,//que ponemos aqui?          
           // Tipo (formato)
           tipo: {
             id: this.form.get('tipo.id')?.value ?? 0,
