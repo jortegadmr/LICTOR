@@ -8,6 +8,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { NavComponent } from './shared/nav/nav.component';
 import { NgFor, NgIf, NgForOf } from '@angular/common';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ModalComponent } from './modal/modal.component';
 
 
 @Component({
@@ -28,7 +29,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     NgFor,
     NgIf,
     NgForOf,
-    PdfViewerModule
+    PdfViewerModule,
+    ModalComponent
  
   ],
   templateUrl: './app.component.html',
