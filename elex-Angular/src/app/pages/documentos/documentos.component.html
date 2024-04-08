@@ -14,6 +14,7 @@
                     <th>Fecha</th>
                     <th>Descripcion</th>
                     <th></th>
+                    <th></th>
 
                 </tr>
             </thead>
@@ -23,6 +24,9 @@
                         <td>{{documento.nombre}}</td>
                         <td>{{documento.fecha}}</td>
                         <td>{{documento.descripcion}}</td>
+                        <td>
+                            <button class="btn btn-light" (click)="generatePDF(documento)" >Generar PDF</button>
+                        </td>
                         <td>
                             <button class="btn btn-primary" routerLink="{{documento.id}}">Editar</button>
                             <button class="btn btn-danger" (click)="deleteDocumento(documento)">Eliminar</button>

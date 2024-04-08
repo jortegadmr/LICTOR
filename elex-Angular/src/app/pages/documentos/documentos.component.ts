@@ -4,6 +4,8 @@ import { AsyncPipe } from '@angular/common';
 import { DocumentosService } from '../../services/documentos/documentos.service';
 import { Documentos } from '../../services/documentos/documentos-response';
 
+import {jsPDF} from 'jspdf';
+
 @Component({
   selector: 'app-documentos',
   standalone: true,
@@ -37,5 +39,33 @@ export class DocumentosComponent {
       this.router.navigate(['/documentos']).then(() => 
         window.location.reload());
     })
+  }
+
+  generatePDF(documento:Documentos) {
+    const doc = new jsPDF();
+    
+doc.text('Titulo del Documento: ' + documento.nombre, 20, 70);
+doc.text('Fecha del Documento: ' + documento.fecha, 20, 80);
+doc.text('Descripción del Documento: ' + documento.descripcion, 20, 90);
+
+// Tipo - (ACTUACION)
+doc.text('Actuación Relacionada: ' + documento.tipo.nombre, 20, 110);
+doc.text('Expediente de la Actuación: ' + documento.tipo.expediente.numero, 20, 120);
+doc.text('Estado de la Actuación: ' + (documento.tipo.estado ? 'Activo' : 'Inactivo'), 20, 130);
+
+doc.text('Datos del expediente:', 20, 150,);
+doc.text('Fecha: ' + documento.tipo.expediente.fecha, 30, 170);
+doc.text('Materia: ' + documento.tipo.expediente.materia, 30, 180);
+doc.text('Responsable: ' + documento.tipo.expediente.responsable, 30, 190);
+doc.text('Segundo responsable: ' + (documento.tipo.expediente.responsable2 || 'No especificado'), 30, 200);
+doc.text('Consejería: ' + documento.tipo.expediente.consejeria, 30, 210);
+doc.text('Descripción: ' + documento.tipo.expediente.descripcion, 30, 220);
+doc.text('Condición: ' + documento.tipo.expediente.condicion, 30, 230);
+doc.text('Estado: ' + (documento.tipo.expediente.estado ? 'Activo' : 'Inactivo'), 30, 250);
+doc.text('Tipo Expediente: ' + documento.tipo.expediente.expediente.nombre, 30, 260);
+doc.text('Precio: ' + documento.tipo.expediente.precio + '€', 30, 240);
+
+doc.save(documento.nombre+'.pdf');
+
   }
 }
