@@ -5,7 +5,7 @@ export interface Documentos {
     nombre:      string;
     descripcion: string;
     fecha:       string;
-    archivo:     null;
+    archivo:     Blob;
     tipo:        Tipo;
 }
 

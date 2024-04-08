@@ -172,7 +172,7 @@ export class DocumentosFormComponent implements OnInit {
           nombre: this.form.get('nombre')?.value ?? '',
           fecha: this.form.get('fecha')?.value ?? '',
           descripcion: this.form.get('descripcion')?.value ?? '',
-          archivo: null, // Esta nulo hasta que podamos subir el archivo
+          archivo: this.form.get('archivo')?.value ?? '',
           // Tipo (formato)
           tipo: {
             id: this.form.get('tipo.id')?.value ?? 0,
