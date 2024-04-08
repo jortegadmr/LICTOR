@@ -17,13 +17,17 @@ import { Tipo } from '../../services/tipo-expediente/tipo-response';
   templateUrl: './tipo-form.component.html',
   styleUrl: './tipo-form.component.css'
 })
-export class TipoFormComponent {
+export class TipoFormComponent implements OnInit {
  
-
   private fb = inject(FormBuilder);
   private tipoExpedienteService = inject(TipoExpedienteService); //inyeccion de dependencias, inicializa el servicio
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+
+  ngOnInit(): void {
+    const tipoId = this.route.snapshot.paramMap.get('id');
+    console.log(tipoId);
+  }
 
   form = this.fb.group({
     

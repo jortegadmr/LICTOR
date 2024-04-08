@@ -28,7 +28,7 @@ export const routes: Routes = [
                 component: TipoFormComponent, 
             },
             { 
-                path: ':id/nombre', 
+                path: ':id/:nombre', 
                 component: TipoFormComponent, 
             },
         ]
