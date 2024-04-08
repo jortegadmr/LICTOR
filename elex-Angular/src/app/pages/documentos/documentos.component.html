@@ -9,28 +9,28 @@
     <div class="table-container">
         <table class="table">
             <thead>
-                <tr>
+                <tr class="text-center">
                     <th>Nombre</th>
                     <th>Fecha</th>
                     <th>Descripcion</th>
                     <th>Archivo</th>
-                    <th></th>
-                    <th></th>
+                    <th>PDF</th>
+                    <th>Acciones</th>
 
                 </tr>
             </thead>
             <tbody>
                 @for (documento of document; track documento.id) {
-                    <tr>
+                    <tr >
                         <td>{{documento.nombre}}</td>
                         <td>{{documento.fecha}}</td>
                         <td>{{documento.descripcion}}</td>
                         <td>{{documento.archivo}}</td>
-                        <td>
+                        <td class="text-center">
                             <button class="btn btn-light" (click)="generatePDF(documento)" >Generar PDF</button>
                             <button class="btn btn-light" routerLink="/{{documento.id}}/pdf" >Ver</button>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <button class="btn btn-primary" routerLink="{{documento.id}}">Editar</button>
                             <button class="btn btn-danger" (click)="deleteDocumento(documento)">Eliminar</button>
                         </td>
@@ -38,7 +38,12 @@
                 }
             </tbody>
         </table>
+        
        
     </div>
+    <div class="contenedor">
+        <app-modal></app-modal>
+    </div>
+    
    
 </div>

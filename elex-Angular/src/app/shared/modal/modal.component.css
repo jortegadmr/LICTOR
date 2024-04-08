@@ -1,0 +1,29 @@
+.btn-primary {
+    background-color: #ff9100;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size:2em;
+    
+}
+
+.btn-primary:hover {
+    background-color: #166488;
+}
+
+.btn-light {
+    background-color: #7a8d96;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-light:hover {
+    background-color: #166488;
+}

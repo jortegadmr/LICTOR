@@ -4,6 +4,7 @@ import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-exped
 import { Tipo } from '../../services/tipo-expediente/tipo-response';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { ModalComponent } from "../../shared/modal/modal.component";
 
 
 @Component({
@@ -16,7 +17,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
         RouterOutlet,
         AsyncPipe,
         TipoExpedienteComponent,
-        
+        ModalComponent
     ]
 })
 export class DashboardComponent {}

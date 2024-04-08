@@ -8,6 +8,7 @@ import {jsPDF} from 'jspdf';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ModalComponent } from "../../shared/modal/modal.component";
 
 
 
@@ -22,7 +23,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
         AsyncPipe,
         DocumentosComponent,
         PdfViewerModule,
-        
+        ModalComponent
     ]
 })
 export class DocumentosComponent {
