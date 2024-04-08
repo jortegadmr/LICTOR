@@ -229,5 +229,7 @@ export class DocumentosFormComponent implements OnInit {
       else { console.error('El formulario no es válido'); }
     }
     else { console.error('El formulario es nulo'); }
+    this.form!.markAllAsTouched();
+    alert("Rellene el formulario correctamente");
   }
 }

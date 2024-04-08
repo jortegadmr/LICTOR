@@ -56,6 +56,7 @@ export class TipoFormComponent implements OnInit {
           });
       } else {
         console.error('El formulario no es válido');
+        this.form.markAllAsTouched();
         alert('Rellene el formulario');
       }
     } else {
