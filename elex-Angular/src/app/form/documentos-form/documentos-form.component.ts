@@ -94,7 +94,7 @@ export class DocumentosFormComponent implements OnInit {
             nombre: [documentos.nombre, [Validators.required]],
             fecha: [documentos.fecha, [Validators.required]],
             descripcion: [documentos.descripcion, [Validators.required]],
-            archivo: null,
+            archivo: [documentos.archivo],
             tipo: this.fb.group({
               id: [documentos.tipo.id, [Validators.required]],
               nombre: [documentos.tipo.nombre, [Validators.required]],
@@ -128,7 +128,7 @@ export class DocumentosFormComponent implements OnInit {
         nombre: ['', [Validators.required]],
         fecha: ['', [Validators.required]],
         descripcion: ['', [Validators.required]],
-        archivo: null,
+        archivo: [''],
         tipo: this.fb.group({
           id: [null, [Validators.required]],
           nombre: ['', [Validators.required]],
