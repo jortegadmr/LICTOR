@@ -247,7 +247,7 @@ export class ActuacionesFormComponent implements OnInit {
             .subscribe(() => {
 
               console.log("Se ha creado correctamente la Actuacion");
-              alert("Se ha creado correctamente la Actuacion");
+              alert("Se ha modificado correctamente la Actuacion");
               this.router.navigate(['/actuaciones']).then(() => {
                 window.location.reload();
               })

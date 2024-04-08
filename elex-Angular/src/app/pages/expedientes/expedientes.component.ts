@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { ExpedientesService } from '../../services/expedientes/expedientes.service';
@@ -16,7 +16,7 @@ import { Expedientes } from '../../services/expedientes/expedientes-response';
   templateUrl: './expedientes.component.html',
   styleUrl: './expedientes.component.css'
 })
-export class ExpedientesComponent {
+export class ExpedientesComponent implements OnInit {
 
   public expedientesService = inject (ExpedientesService); // Inyectamos el Servicio donde están las llamadas al servidor
 

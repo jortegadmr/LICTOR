@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { TipoExpedienteService } from '../../services/tipo-expediente/tipo-expediente.service';
 import { Tipo } from '../../services/tipo-expediente/tipo-response';
@@ -20,7 +20,7 @@ import { AsyncPipe } from '@angular/common';
 })
 
 
-export class TipoExpedienteComponent {
+export class TipoExpedienteComponent implements OnInit {
   public tipoExpedienteService = inject (TipoExpedienteService); // Inyectamos el Servicio donde están las llamadas al servidor
 
   tipos: Tipo[]=[]; // Guardamos los datos devueltos por el Servicio

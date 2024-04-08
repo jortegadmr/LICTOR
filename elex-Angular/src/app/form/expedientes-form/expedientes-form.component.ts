@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, Input } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { ExpedientesService } from '../../services/expedientes/expedientes.service';
@@ -53,7 +53,7 @@ export class ExpedientesFormComponent implements OnInit {
     if (idExpediente){
 
       this.expedientesService.getExpediente(parseInt(idExpediente))
-      .subscribe( (expediente: any) =>{
+      .subscribe( (expediente: Expedientes) =>{
 
             this.expedienteExiste = expediente
 
