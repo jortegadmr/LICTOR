@@ -37,4 +37,4 @@
 
 Si necesitan ayuda para arrancar el proyecto no duden en ponerse en contacto:
 
-Correo electrónico: jaortegadur@gmail.com
+Correo electrónico: jao******r@gmail.com
